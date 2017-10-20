@@ -36,57 +36,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li><a href="sites.aspx">Site List</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Activity List <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                    <li><a href="preventivelist.aspx">All Preventive</a></li>
-                    <li><a href="correctivelist.aspx">All Corrective</a></li>
-                    <li><a href="CorrectivePOBASTMonitoring.aspx">All Corrective PO & BAST Monitoring</a></li>
-                    <li><a href="bbmlist.aspx">All BBM</a></li>
-                    
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Preventive <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="site_genset_list.aspx">Permanent Genset List</a></li>
-                        <li><a href="site_maintenance_visit_target.aspx">Maintenance Visit</a></li>
-                        <li><a href="preventive_target_list.aspx">Preventive Achievement</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="fmuser_list.aspx">FM User</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Trouble Ticket <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                    <li><a href="TroubleTicketAllList.aspx">All Trouble Ticket</a></li>
-                    <li><a href="TroubleTicketList.aspx">Backup Genset/ MBP</a></li>
-                    <li><a href="TroubleTicketListCorrective.aspx">Corrective</a></li>
-                    <li><a href="car_unit_list.aspx">Car Unit List</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Progress Report<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="rekap_preventive.aspx">Maintenance Preventive</a></li>
-                        <li><a href="rekap_corrective.aspx">Maintenance Corrective</a></li>
-                        <li><a href="rekap_corrective_all.aspx">Maintenance Corrective All</a></li>
-                    </ul>
-                </li>
-               <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Monitoring<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="dashboardpreventive.aspx">Maintenance Preventive</a></li>
-                        <li><a href="dashboard.aspx">Maintenance Corrective</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">KPI<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="maintenance_spot.aspx">Report New Maintenance Spot</a></li>
-                    </ul>
-                </li>
+                <li><a href="sites.aspx">Data PO</a></li>                
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
