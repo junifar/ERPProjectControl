@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15B4EC39-F1AD-45CD-9C79-FE97F387AE51}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERPProjectControl</RootNamespace>
+    <AssemblyName>ERPProjectControl</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET AJAX R1 2017\Bin45\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET AJAX R1 2017\Bin45\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap\css\bootstrap.css.map" />
+    <Content Include="bootstrap\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap\css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="dist\js\app.min.js.map" />
+    <Content Include="Main-blue.Master" />
+    <Content Include="App_Data\RadSpell\de-DE.tdf" />
+    <Content Include="App_Data\RadSpell\en-US.tdf" />
+    <Content Include="App_Data\RadSpell\fr-FR.tdf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadCaptcha\0.wav" />
+    <Content Include="App_Data\RadCaptcha\1.wav" />
+    <Content Include="App_Data\RadCaptcha\2.wav" />
+    <Content Include="App_Data\RadCaptcha\3.wav" />
+    <Content Include="App_Data\RadCaptcha\4.wav" />
+    <Content Include="App_Data\RadCaptcha\5.wav" />
+    <Content Include="App_Data\RadCaptcha\6.wav" />
+    <Content Include="App_Data\RadCaptcha\7.wav" />
+    <Content Include="App_Data\RadCaptcha\8.wav" />
+    <Content Include="App_Data\RadCaptcha\9.wav" />
+    <Content Include="App_Data\RadCaptcha\A.wav" />
+    <Content Include="App_Data\RadCaptcha\B.wav" />
+    <Content Include="App_Data\RadCaptcha\C.wav" />
+    <Content Include="App_Data\RadCaptcha\D.wav" />
+    <Content Include="App_Data\RadCaptcha\E.wav" />
+    <Content Include="App_Data\RadCaptcha\F.wav" />
+    <Content Include="App_Data\RadCaptcha\G.wav" />
+    <Content Include="App_Data\RadCaptcha\H.wav" />
+    <Content Include="App_Data\RadCaptcha\I.wav" />
+    <Content Include="App_Data\RadCaptcha\J.wav" />
+    <Content Include="App_Data\RadCaptcha\K.wav" />
+    <Content Include="App_Data\RadCaptcha\L.wav" />
+    <Content Include="App_Data\RadCaptcha\M.wav" />
+    <Content Include="App_Data\RadCaptcha\N.wav" />
+    <Content Include="App_Data\RadCaptcha\O.wav" />
+    <Content Include="App_Data\RadCaptcha\P.wav" />
+    <Content Include="App_Data\RadCaptcha\Q.wav" />
+    <Content Include="App_Data\RadCaptcha\R.wav" />
+    <Content Include="App_Data\RadCaptcha\S.wav" />
+    <Content Include="App_Data\RadCaptcha\T.wav" />
+    <Content Include="App_Data\RadCaptcha\U.wav" />
+    <Content Include="App_Data\RadCaptcha\V.wav" />
+    <Content Include="App_Data\RadCaptcha\W.wav" />
+    <Content Include="App_Data\RadCaptcha\X.wav" />
+    <Content Include="App_Data\RadCaptcha\Y.wav" />
+    <Content Include="App_Data\RadCaptcha\Z.wav" />
+    <Content Include="bootstrap\css\bootstrap.css" />
+    <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap\css\yeti\bootstrap.min.css" />
+    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap\js\bootstrap.js" />
+    <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\npm.js" />
+    <Content Include="default.aspx" />
+    <Content Include="dist\css\AdminLTE.css" />
+    <Content Include="dist\css\AdminLTE.min.css" />
+    <Content Include="dist\css\login-style.css" />
+    <Content Include="dist\css\skins\skin-black-light.css" />
+    <Content Include="dist\css\skins\skin-black-light.min.css" />
+    <Content Include="dist\css\skins\skin-black.css" />
+    <Content Include="dist\css\skins\skin-black.min.css" />
+    <Content Include="dist\css\skins\skin-blue-light.css" />
+    <Content Include="dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="dist\css\skins\skin-blue.css" />
+    <Content Include="dist\css\skins\skin-blue.min.css" />
+    <Content Include="dist\css\skins\skin-green-light.css" />
+    <Content Include="dist\css\skins\skin-green-light.min.css" />
+    <Content Include="dist\css\skins\skin-green.css" />
+    <Content Include="dist\css\skins\skin-green.min.css" />
+    <Content Include="dist\css\skins\skin-purple-light.css" />
+    <Content Include="dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="dist\css\skins\skin-purple.css" />
+    <Content Include="dist\css\skins\skin-purple.min.css" />
+    <Content Include="dist\css\skins\skin-red-light.css" />
+    <Content Include="dist\css\skins\skin-red-light.min.css" />
+    <Content Include="dist\css\skins\skin-red.css" />
+    <Content Include="dist\css\skins\skin-red.min.css" />
+    <Content Include="dist\css\skins\skin-yellow-light.css" />
+    <Content Include="dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="dist\css\skins\skin-yellow.css" />
+    <Content Include="dist\css\skins\skin-yellow.min.css" />
+    <Content Include="dist\css\skins\_all-skins.css" />
+    <Content Include="dist\css\skins\_all-skins.min.css" />
+    <Content Include="dist\img\avatar.png" />
+    <Content Include="dist\img\avatar04.png" />
+    <Content Include="dist\img\avatar2.png" />
+    <Content Include="dist\img\avatar3.png" />
+    <Content Include="dist\img\avatar5.png" />
+    <Content Include="dist\img\boxed-bg.jpg" />
+    <Content Include="dist\img\boxed-bg.png" />
+    <Content Include="dist\img\credit\american-express.png" />
+    <Content Include="dist\img\credit\cirrus.png" />
+    <Content Include="dist\img\credit\mastercard.png" />
+    <Content Include="dist\img\credit\mestro.png" />
+    <Content Include="dist\img\credit\paypal.png" />
+    <Content Include="dist\img\credit\paypal2.png" />
+    <Content Include="dist\img\credit\visa.png" />
+    <Content Include="dist\img\default-50x50.gif" />
+    <Content Include="dist\img\icons.png" />
+    <Content Include="dist\img\photo1.png" />
+    <Content Include="dist\img\photo2.png" />
+    <Content Include="dist\img\photo3.jpg" />
+    <Content Include="dist\img\photo4.jpg" />
+    <Content Include="dist\img\user1-128x128.jpg" />
+    <Content Include="dist\img\user2-160x160.jpg" />
+    <Content Include="dist\img\user3-128x128.jpg" />
+    <Content Include="dist\img\user4-128x128.jpg" />
+    <Content Include="dist\img\user5-128x128.jpg" />
+    <Content Include="dist\img\user6-128x128.jpg" />
+    <Content Include="dist\img\user7-128x128.jpg" />
+    <Content Include="dist\img\user8-128x128.jpg" />
+    <Content Include="dist\js\app.js" />
+    <Content Include="dist\js\app.min.js" />
+    <Content Include="dist\js\demo.js" />
+    <Content Include="dist\js\login-js.js" />
+    <Content Include="dist\js\pages\dashboard.js" />
+    <Content Include="dist\js\pages\dashboard2.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main-blue.Master.cs">
+      <DependentUpon>Main-blue.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Main-blue.Master.designer.cs">
+      <DependentUpon>Main-blue.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11541</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:11450/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

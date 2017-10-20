@@ -1,0 +1,109 @@
+﻿/*body {
+    background-color: white;
+}
+
+#loginbox {
+    margin-top: 30px;
+}
+
+#loginbox > div:first-child {        
+    padding-bottom: 10px;    
+}
+
+.iconmelon {
+    display: block;
+    margin: auto;
+}
+
+#form > div {
+    margin-bottom: 25px;
+}
+
+#form > div:last-child {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel {    
+    background-color: transparent;
+}
+
+.panel-body {
+    padding-top: 30px;
+    background-color: rgba(2555,255,255,.3);
+}
+
+#particles {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;                        
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
+}
+
+.iconmelon,
+.im {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+  fill: #525151;
+}
+
+.iconmelon:after,
+.im:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}*/
+
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    width:100px;
+	height:100px;
+  background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* W3C */
+font-family: 'Raleway', sans-serif;
+}
+
+p {
+	color:#CCC;
+}
+
+.spacing {
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.middlePage {
+	width: 680px;
+    height: 500px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.logo {
+	color:#CCC;
+}
+
+.panel-info > .panel-heading {
+    color: #31708f;
+    background-color: rgb(53, 88, 106);
+    border-color: #bce8f1;
+    color: white;
+}
