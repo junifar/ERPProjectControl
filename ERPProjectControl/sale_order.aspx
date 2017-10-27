@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main-blue.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="ERPProjectControl._default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main-blue.Master" AutoEventWireup="true" CodeBehind="sale_order.aspx.cs" Inherits="ERPProjectControl._default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadMaster" runat="server">
     <style>
         .RadGrid_Metro .rgHeader a {
