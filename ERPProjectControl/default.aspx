@@ -66,16 +66,25 @@
                                 <telerik:RadGrid ID="RadGridListPO" runat="server"
                                     AllowFilteringByColumn="True" AllowPaging="True"
                                     AllowSorting="True" Skin="Metro" CellSpacing="-1"
-                                    GroupingSettings-CaseSensitive="False" DataSourceID="SqlDataSourceSalesOrderLine" EnableHeaderContextAggregatesMenu="True" EnableHeaderContextFilterMenu="True" EnableHeaderContextMenu="True" PageSize="20" ShowGroupPanel="True">
+                                    GroupingSettings-CaseSensitive="False"
+                                    DataSourceID="SqlDataSourceSalesOrderLine" EnableHeaderContextAggregatesMenu="True"
+                                    EnableHeaderContextFilterMenu="True"
+                                    EnableHeaderContextMenu="True"
+                                    PageSize="20" ShowGroupPanel="True"
+                                    AllowAutomaticUpdates="True">
 
                                     <ClientSettings Resizing-AllowResizeToFit="True" Resizing-ResizeGridOnColumnResize="False" Resizing-EnableRealTimeResize="False" Resizing-AllowRowResize="False" Resizing-AllowColumnResize="False" Scrolling-FrozenColumnsCount="3" AllowDragToGroup="True">
                                         <Scrolling UseStaticHeaders="True" AllowScroll="True" ScrollHeight="500px"></Scrolling>
                                     </ClientSettings>
 
                                     <MasterTableView DataSourceID="SqlDataSourceSalesOrderLine" AutoGenerateColumns="False" 
-                                        EnableHeaderContextAggregatesMenu="True" CommandItemDisplay="Top">
+                                        EnableHeaderContextAggregatesMenu="True" CommandItemDisplay="Top" DataKeyNames="ID">
                                         <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
                                         <Columns>
+                                            <telerik:GridHyperLinkColumn UniqueName="HyperlinkEditColumn"
+                                                DataNavigateUrlFields="ID" DataNavigateUrlFormatString="default.aspx?id={0}" 
+                                                Text="Edit" ItemStyle-CssClass="btn btn-primary" HeaderStyle-Width="40px"
+                                                Target="_blank"></telerik:GridHyperLinkColumn>                                                                                       
                                             <telerik:GridBoundColumn DataField="no_so" ReadOnly="True" 
                                                 HeaderText="Nomor SO" SortExpression="no_so" 
                                                 UniqueName="no_so" FilterControlAltText="Filter no_so column" 
@@ -126,15 +135,31 @@
                                                 HeaderText="Tipe Project" SortExpression="project_type" 
                                                 UniqueName="project_type" FilterControlAltText="Filter project_type column"
                                                 HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn DataField="sub_project_type" ReadOnly="True" 
+                                                HeaderText="Sub Tipe Project" SortExpression="sub_project_type" 
+                                                UniqueName="sub_project_type" FilterControlAltText="Filter sub_project_type column"
+                                                HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn DataField="sales_order_description" ReadOnly="True" 
+                                                HeaderText="Deskripsi PO" SortExpression="sales_order_description" 
+                                                UniqueName="sales_order_description" FilterControlAltText="Filter sales_order_description column"
+                                                HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn DataField="project_control_state_line" ReadOnly="True" 
+                                                HeaderText="Status PO" SortExpression="project_control_state_line" 
+                                                UniqueName="project_control_state_line" FilterControlAltText="Filter project_control_state_line column"
+                                                HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                                            
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </telerik:RadAjaxPanel>
+                            <telerik:RadInputManager ID="RadInputPO" runat="server">
+                                <telerik:TextBoxSetting BehaviorID="TextBoxSetting1"></telerik:TextBoxSetting>
+                            </telerik:RadInputManager>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLine" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".sale_order.name AS no_so, "public".sale_order.client_order_ref AS no_po, "public".sale_order.date_order, "public".res_partner.name AS customer, "public".project_site.site_id_customer, "public".account_analytic_account.name AS project_id_prasetia, "public".project_site.name AS site_name, "public".project_control_area.name AS area_name, "public".project_control_sub_area.name AS sub_area_name, "public".sale_order_line.price_unit AS nilai_project, "public".project_site_type.name AS project_type FROM { oj { oj { oj { oj { oj { oj { oj { oj prasetia_dwidharma."public".sale_order_line LEFT OUTER JOIN prasetia_dwidharma."public".sale_order ON "public".sale_order_line.order_id = "public".sale_order.id } LEFT OUTER JOIN prasetia_dwidharma."public".res_partner ON "public".sale_order.partner_id = "public".res_partner.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_project ON "public".sale_order_line.project_id = "public".project_project.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site ON "public".project_project.site_id = "public".project_site.id } LEFT OUTER JOIN prasetia_dwidharma."public".account_analytic_account ON "public".project_project.analytic_account_id = "public".account_analytic_account.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_area ON "public".project_site.project_control_area_id = "public".project_control_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_sub_area ON "public".project_site.project_control_sub_area_id = "public".project_control_sub_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site_type ON "public".project_project.site_type_id = "public".project_site_type.id }' />
+    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLine" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".sale_order_line.id, "public".sale_order.name AS no_so, "public".sale_order.client_order_ref AS no_po, "public".sale_order.date_order, "public".res_partner.name AS customer, "public".project_site.site_id_customer, "public".account_analytic_account.name AS project_id_prasetia, "public".project_site.name AS site_name, "public".project_control_area.name AS area_name, "public".project_control_sub_area.name AS sub_area_name, "public".sale_order_line.price_unit AS nilai_project, "public".project_site_type.name AS project_type, "public".project_control_sub_tipe_project.name AS sub_project_type, "public".sale_order_line.project_control_state_line, "public".sale_order_line.sales_order_description FROM { oj { oj { oj { oj { oj { oj { oj { oj { oj prasetia_dwidharma."public".sale_order_line LEFT OUTER JOIN prasetia_dwidharma."public".sale_order ON "public".sale_order_line.order_id = "public".sale_order.id } LEFT OUTER JOIN prasetia_dwidharma."public".res_partner ON "public".sale_order.partner_id = "public".res_partner.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_project ON "public".sale_order_line.project_id = "public".project_project.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site ON "public".project_project.site_id = "public".project_site.id } LEFT OUTER JOIN prasetia_dwidharma."public".account_analytic_account ON "public".project_project.analytic_account_id = "public".account_analytic_account.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_area ON "public".project_site.project_control_area_id = "public".project_control_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_sub_area ON "public".project_site.project_control_sub_area_id = "public".project_control_sub_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site_type ON "public".project_project.site_type_id = "public".project_site_type.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_sub_tipe_project ON "public".project_project.project_control_sub_tipe_project_id = "public".project_control_sub_tipe_project.id }' />
 </asp:Content>
