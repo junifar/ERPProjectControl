@@ -82,7 +82,7 @@
                                         <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
                                         <Columns>
                                             <telerik:GridHyperLinkColumn UniqueName="HyperlinkEditColumn"
-                                                DataNavigateUrlFields="ID" DataNavigateUrlFormatString="default.aspx?id={0}" 
+                                                DataNavigateUrlFields="ID" DataNavigateUrlFormatString="sale_order_detail.aspx?id={0}" 
                                                 Text="Edit" ItemStyle-CssClass="btn btn-primary" HeaderStyle-Width="40px"
                                                 Target="_blank"></telerik:GridHyperLinkColumn>                                                                                       
                                             <telerik:GridBoundColumn DataField="no_so" ReadOnly="True" 
