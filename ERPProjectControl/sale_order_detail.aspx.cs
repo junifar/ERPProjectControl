@@ -48,6 +48,8 @@ namespace ERPProjectControl
             var area = ((RadDropDownList)FormViewPO.FindControl("ddlArea")).SelectedValue;
             var sub_area = ((RadDropDownList)FormViewPO.FindControl("ddlSubArea")).SelectedValue;
             var sub_tipe_project = ((RadDropDownList)FormViewPO.FindControl("ddl_sub_tipe_project")).SelectedValue;
+            var deskripsi_po = ((TextBox)FormViewPO.FindControl("txtDeskripsiPO")).Text;
+            var status_po = ((RadDropDownList)FormViewPO.FindControl("ddlStatusPO")).SelectedValue;
 
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSite,
                 site_id,
@@ -59,10 +61,7 @@ namespace ERPProjectControl
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateProject,
                 project_id,
                 checkNullOrEmpty(sub_tipe_project, "NULL"));
-            SqlDataSourceArea.Update();
-
-            var deskripsi_po = ((TextBox)FormViewPO.FindControl("txtDeskripsiPO")).Text;
-            var status_po = ((RadDropDownList)FormViewPO.FindControl("ddlStatusPO")).SelectedValue;
+            SqlDataSourceArea.Update();            
 
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSaleOrderLine,
                 Request.QueryString["id"],
