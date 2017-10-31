@@ -5,58 +5,76 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace ERPProjectControl
 {
     public partial class sale_order_detail : System.Web.UI.Page
     {
+        private String site_id;
+        private String project_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlDataSourceSalesOrder.SelectCommand = string.Format(@"SELECT
-                                                        project_control_sales_order.id,
-                                                        project_control_sales_order.no_so,
-                                                        project_control_sales_order.no_po,
-                                                        project_control_sales_order.date_order,
-                                                        project_control_sales_order.customer,
-                                                        project_control_sales_order.site_id_customer,
-                                                        project_control_sales_order.project_id_prasetia,
-                                                        project_control_sales_order.site_name,
-                                                        project_control_sales_order.area_name,
-                                                        project_control_sales_order.sub_area_name,
-                                                        project_control_sales_order.nilai_project,
-                                                        project_control_sales_order.project_type,
-                                                        project_control_sales_order.sub_project_type,
-                                                        project_control_sales_order.project_control_state_line,
-                                                        project_control_sales_order.sales_order_description,
-                                                        project_control_sales_order.project_id
-                                                        FROM
-                                                        project_control_sales_order
-                                                        WHERE
-                                                        id={0}", Request.QueryString["id"]);
+            if (Request.QueryString["id"] != null)
+            {
+                SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, Request.QueryString["id"]);
 
-            DataView dv = (DataView)SqlDataSourceSalesOrder.Select(DataSourceSelectArguments.Empty);
-            DataRowView drv = dv[0];
-            SqlDataSourceInvoiceList.SelectCommand = string.Format(@"SELECT
-                                                        account_invoice_line.id,
-                                                        account_invoice.name AS invoice_number,
-                                                        account_analytic_account.name AS project_id,
-                                                        account_invoice_line.name AS description,
-                                                        account_invoice_line.price_subtotal AS amount,
-                                                        account_invoice.state AS status,
-                                                        account_invoice.date_invoice
-                                                        FROM
-                                                        account_invoice_line
-                                                        LEFT JOIN account_invoice ON account_invoice_line.invoice_id = account_invoice.id
-                                                        LEFT JOIN project_project ON account_invoice_line.project_id = project_project.id
-                                                        LEFT JOIN account_analytic_account ON project_project.analytic_account_id = account_analytic_account.id
-                                                        WHERE
-                                                        account_invoice_line.project_id = {0}", drv["project_id"].ToString());
-            LabelProjectID.Text = drv["project_id_prasetia"].ToString();
-            LabelSiteID.Text = drv["site_name"].ToString();
+                DataView dv = (DataView)SqlDataSourceSalesOrder.Select(DataSourceSelectArguments.Empty);
+                DataRowView drv = dv[0];
+                site_id = drv["site_id"].ToString();
+                project_id = drv["project_id"].ToString();
+                if (drv["project_id"].ToString() != "")
+                {
+                    SqlDataSourceInvoiceList.SelectCommand = string.Format(Constant.Constant.querySaleInvoice, drv["project_id"].ToString());
+                }
+                else
+                {
+                    SqlDataSourceInvoiceList.SelectCommand = string.Format(Constant.Constant.querySaleInvoice, 0);
+                }
+
+                LabelProjectID.Text = drv["project_id_prasetia"].ToString();
+                LabelSiteID.Text = drv["site_name"].ToString();
+            }
+            else {
+                SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, 0);
+                RadGridListInvoice.Visible = false;
+            }
+            
         }
 
-        protected DataView getSalesOrder() {
-            return (DataView)SqlDataSourceSalesOrder.Select(DataSourceSelectArguments.Empty);
+        protected void btnsubmit_Click(object sender, EventArgs e)
+        {
+            var site_id_customer = ((TextBox)FormViewPO.FindControl("txtSiteIdCustomer")).Text;
+            var area = ((RadDropDownList)FormViewPO.FindControl("ddlArea")).SelectedValue;
+            var sub_area = ((RadDropDownList)FormViewPO.FindControl("ddlSubArea")).SelectedValue;
+            var sub_tipe_project = ((RadDropDownList)FormViewPO.FindControl("ddl_sub_tipe_project")).SelectedValue;
+
+            SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSite,
+                site_id,
+                checkNullOrEmpty(site_id_customer, "''"),
+                checkNullOrEmpty(area, "NULL"),
+                checkNullOrEmpty(sub_area, "NULL"));
+            SqlDataSourceArea.Update();
+
+            SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateProject,
+                project_id,
+                checkNullOrEmpty(sub_tipe_project, "NULL"));
+            SqlDataSourceArea.Update();
+
+            var deskripsi_po = ((TextBox)FormViewPO.FindControl("txtDeskripsiPO")).Text;
+            var status_po = ((RadDropDownList)FormViewPO.FindControl("ddlStatusPO")).SelectedValue;
+
+            SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSaleOrderLine,
+                Request.QueryString["id"],
+                checkNullOrEmpty(deskripsi_po, "''"),
+                (checkNullOrEmpty(status_po, "NULL") == "NULL") ? "NULL" : "'" + status_po + "'");
+            SqlDataSourceArea.Update();
+            PanelStatus.Visible = true;
+            FormViewPO.DataBind();
+        }
+
+        private string checkNullOrEmpty(String val, String repl) { 
+            return string.IsNullOrEmpty(val)? repl : val;
         }
     }
 }
