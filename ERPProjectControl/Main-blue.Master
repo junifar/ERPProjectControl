@@ -7,7 +7,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>EPM - For Project Maintenance</title>
-    <link href="bootstrap/css/yeti/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/yeti/bootstrap.min.css" rel="stylesheet" />    
+    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.0.0-6/css/ionicons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/AdminLTE.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/skins/_all-skins.min.css" />
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -16,12 +23,17 @@
     <![endif]-->
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>   
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <%--<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>   --%>
 
     <asp:ContentPlaceHolder ID="HeadMaster" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <div class="wrapper">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
         <div class="navbar-header">
@@ -31,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><b>ERP</b>-Extra</a>
+            <a class="navbar-brand" href="/"><b>ERP</b>-Extra</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -58,7 +70,7 @@
         </asp:ContentPlaceHolder>
     </div>
     </form>
-
+    </div>
     <!-- Latest compiled and minified JavaScript -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
         

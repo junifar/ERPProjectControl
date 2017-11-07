@@ -31,16 +31,24 @@
     </telerik:radscriptmanager>
     <telerik:radajaxmanager ID="RadAjaxManager2" runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlID="btnsubmit">
+            <telerik:AjaxSetting AjaxControlID="RadGrid1">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="PanelStatus" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="FormViewPO" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="RadGridListInvoice">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnsubmit">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="PanelStatus" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="FormViewPO" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid2" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid3" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -175,62 +183,208 @@
                                 <asp:TextBox runat="server" ID="txtid" class="form-control input-sm" placeholder="ID" Text='<%# Eval("PREVENTIVE_CODE") %>' ReadOnly="True"></asp:TextBox>
                             </div>--%>
                         </div>
+                        
                         <div class="row">
-                            <div class="form-group col-sm-12">                                                
-                                <asp:Button ID="btnsubmit" runat="server" Text="Update" CssClass="btn btn-primary pull-right" OnClick="btnsubmit_Click"/>
+                            <div class="col-md-12">
+                                <telerik:RadTabStrip runat="server" ID="radStrip1" MultiPageID="radMultiPage1" EnableTheming="true"
+                                    Skin="BlackMetroTouch" SelectedIndex="0">
+                                    <Tabs>
+                                        <telerik:RadTab Text="Binder Volume I"></telerik:RadTab>
+                                        <telerik:RadTab Text="Binder Volume II"></telerik:RadTab>
+                                        <telerik:RadTab Text="Binder Volume III"></telerik:RadTab>
+                                        <telerik:RadTab Text="PO History"></telerik:RadTab>
+                                    </Tabs>
+                                </telerik:RadTabStrip>
+                                <telerik:RadMultiPage runat="server" ID="radMultiPage1" SelectedIndex="0">
+                                    <telerik:RadPageView ID="pageBinderVolume1" runat="server">
+                                        <div class="panel panel-primary"> 
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Binder Volume I</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <telerik:RadGrid ID="RadGrid1" runat="server"
+                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
+                                                    GroupingSettings-CaseSensitive="False"
+                                                    DataSourceID="SqlDataSourceBinderVolume1" EnableHeaderContextAggregatesMenu="True"
+                                                    EnableHeaderContextFilterMenu="True"
+                                                    EnableHeaderContextMenu="True"
+                                                    PageSize="20"
+                                                    OnItemDataBound="RadGrid1_ItemDataBound"
+                                                    AllowMultiRowEdit="true">
+
+                                                    <GroupingSettings CaseSensitive="False" CollapseAllTooltip="Collapse all groups" />
+                                                    <MasterTableView AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume1" EditMode="Batch" EnableHeaderContextAggregatesMenu="True">
+                                                        <SortExpressions>
+                                                            <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
+                                                        </SortExpressions>
+                                                        <Columns>
+                                                            <telerik:GridBoundColumn DataField="id" Display="false" FilterControlAltText="Filter id column" HeaderText="id" ReadOnly="True" SortExpression="id" UniqueName="id">
+                                                            </telerik:GridBoundColumn>
+                                                            <telerik:GridBoundColumn DataField="name" FilterControlAltText="Filter name column" HeaderText="Name" ReadOnly="True" SortExpression="name" UniqueName="name">
+                                                            </telerik:GridBoundColumn>
+                                                            <telerik:GridCheckBoxColumn FilterControlAltText="Filter status column" HeaderStyle-Width="100px" HeaderText="Status" ItemStyle-HorizontalAlign="Center" ReadOnly="False" SortExpression="status" UniqueName="status">
+                                                            </telerik:GridCheckBoxColumn>
+                                                            <telerik:GridCheckBoxColumn FilterControlAltText="Filter mandatory column" HeaderStyle-Width="100px" HeaderText="Mandatory" ItemStyle-HorizontalAlign="Center" ReadOnly="False" SortExpression="mandatory" UniqueName="mandatory">
+                                                                <HeaderStyle Width="100px" />
+                                                                <ItemStyle HorizontalAlign="Center" />
+                                                            </telerik:GridCheckBoxColumn>
+                                                        </Columns>
+                                                    </MasterTableView>
+                                                </telerik:RadGrid>
+                                            </div>
+                                        </div>
+                                    </telerik:RadPageView>
+                                    <telerik:RadPageView ID="pageBinderVolume2" runat="server">
+                                        <div class="panel panel-primary"> 
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Binder Volume II</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <telerik:RadGrid ID="RadGrid2" runat="server"
+                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
+                                                    GroupingSettings-CaseSensitive="False"
+                                                    DataSourceID="SqlDataSourceBinderVolume2" EnableHeaderContextAggregatesMenu="True"
+                                                    EnableHeaderContextFilterMenu="True"
+                                                    EnableHeaderContextMenu="True"
+                                                    PageSize="20"
+                                                    OnItemDataBound="RadGrid1_ItemDataBound"
+                                                    AllowMultiRowEdit="true">
+
+                                                    <MasterTableView DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume2" 
+                                                        EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False"
+                                                        EditMode="Batch">
+                                                        <SortExpressions>
+                                                            <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
+                                                        </SortExpressions>
+                                                        <Columns>            
+                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" 
+                                                                HeaderText="id" SortExpression="id" 
+                                                                UniqueName="id" FilterControlAltText="Filter id column"
+                                                                Display="false"></telerik:GridBoundColumn>                                                    
+                                                            <telerik:GridBoundColumn DataField="name" ReadOnly="True" HeaderText="Name" SortExpression="name" UniqueName="name" FilterControlAltText="Filter name column"></telerik:GridBoundColumn>
+                                                            <telerik:GridCheckBoxColumn HeaderText="Status" 
+                                                                SortExpression="status" UniqueName="status" 
+                                                                FilterControlAltText="Filter status column" ReadOnly="False"
+                                                                HeaderStyle-Width="100px"
+                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                            <telerik:GridCheckBoxColumn HeaderText="Mandatory" 
+                                                                SortExpression="mandatory" UniqueName="mandatory" 
+                                                                FilterControlAltText="Filter mandatory column" ReadOnly="False"
+                                                                HeaderStyle-Width="100px"
+                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                        </Columns>
+                                                    </MasterTableView>
+                                                </telerik:RadGrid>
+                                            </div>
+                                        </div>
+                                    </telerik:RadPageView>
+                                    <telerik:RadPageView ID="pageBinderVolume3" runat="server">
+                                        <div class="panel panel-primary"> 
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Binder Volume III</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <telerik:RadGrid ID="RadGrid3" runat="server"
+                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
+                                                    GroupingSettings-CaseSensitive="False"
+                                                    DataSourceID="SqlDataSourceBinderVolume3" EnableHeaderContextAggregatesMenu="True"
+                                                    EnableHeaderContextFilterMenu="True"
+                                                    EnableHeaderContextMenu="True"
+                                                    PageSize="20"
+                                                    OnItemDataBound="RadGrid1_ItemDataBound"
+                                                    AllowMultiRowEdit="true">
+
+                                                    <MasterTableView DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume3" 
+                                                        EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False"
+                                                        EditMode="Batch">
+                                                        <SortExpressions>
+                                                            <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
+                                                        </SortExpressions>
+                                                        <Columns>                                                                
+                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" 
+                                                                HeaderText="id" SortExpression="id" 
+                                                                UniqueName="id" FilterControlAltText="Filter id column"
+                                                                Display="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridBoundColumn DataField="name" ReadOnly="True" HeaderText="Name" SortExpression="name" UniqueName="name" FilterControlAltText="Filter name column"></telerik:GridBoundColumn>
+                                                            <telerik:GridCheckBoxColumn HeaderText="Status" 
+                                                                SortExpression="status" UniqueName="status" 
+                                                                FilterControlAltText="Filter status column" ReadOnly="False"
+                                                                HeaderStyle-Width="100px"
+                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                            <telerik:GridCheckBoxColumn HeaderText="Mandatory" 
+                                                                SortExpression="mandatory" UniqueName="mandatory" 
+                                                                FilterControlAltText="Filter mandatory column" ReadOnly="False"
+                                                                HeaderStyle-Width="100px"
+                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                        </Columns>
+                                                    </MasterTableView>
+                                                </telerik:RadGrid>
+                                            </div>
+                                        </div>
+                                    </telerik:RadPageView>
+                                    <telerik:RadPageView ID="pageBinderHistoryPO" runat="server">
+                                        <div class="panel panel-primary"> 
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Invoice History</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" HorizontalAlign="NotSet" LoadingPanelID="RadAjaxLoadingPanel1">
+                                                    <telerik:RadGrid ID="RadGridListInvoice" runat="server"
+                                                        AllowFilteringByColumn="False" AllowPaging="True"
+                                                        AllowSorting="True" Skin="Metro" CellSpacing="-1"
+                                                        GroupingSettings-CaseSensitive="False"
+                                                        DataSourceID="SqlDataSourceInvoiceList" EnableHeaderContextAggregatesMenu="True"
+                                                        EnableHeaderContextFilterMenu="True"
+                                                        EnableHeaderContextMenu="True"
+                                                        PageSize="5"
+                                                        AllowAutomaticUpdates="True">
+
+                                                        <ClientSettings Resizing-AllowResizeToFit="True" Resizing-ResizeGridOnColumnResize="False" Resizing-EnableRealTimeResize="False" Resizing-AllowRowResize="False" Resizing-AllowColumnResize="False" Scrolling-FrozenColumnsCount="3">
+                                                            <Scrolling UseStaticHeaders="True" AllowScroll="True" ScrollHeight="200px"></Scrolling>
+                                                        </ClientSettings>
+                                                        <MasterTableView DataSourceID="SqlDataSourceInvoiceList" EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False" DataKeyNames="id">
+                                                            <Columns>
+                                                                <telerik:GridBoundColumn DataField="invoice_number" ReadOnly="True" 
+                                                                    HeaderText="Nomor Invoice" SortExpression="invoice_number" 
+                                                                    UniqueName="invoice_number" FilterControlAltText="Filter invoice_number column"
+                                                                    HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                                                                <telerik:GridBoundColumn DataField="description" ReadOnly="True" 
+                                                                    HeaderText="Keterangan" SortExpression="description" 
+                                                                    UniqueName="description" FilterControlAltText="Filter description column"
+                                                                    HeaderStyle-Width="300px"></telerik:GridBoundColumn>                                                    
+                                                                <telerik:GridBoundColumn DataField="date_invoice" ReadOnly="True" 
+                                                                    HeaderText="Tanggal" SortExpression="date_invoice" 
+                                                                    UniqueName="date_invoice" DataType="System.DateTime" 
+                                                                    FilterControlAltText="Filter date_invoice column"
+                                                                    HeaderStyle-Width="180px"></telerik:GridBoundColumn>
+                                                                <telerik:GridBoundColumn DataField="amount" ReadOnly="True" 
+                                                                    HeaderText="Jumlah" SortExpression="amount" 
+                                                                    UniqueName="amount" DataType="System.Decimal" 
+                                                                    FilterControlAltText="Filter amount column"
+                                                                    HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                                                <telerik:GridBoundColumn DataField="status" ReadOnly="True" 
+                                                                    HeaderText="Status" SortExpression="status" 
+                                                                    UniqueName="status" FilterControlAltText="Filter status column"
+                                                                    HeaderStyle-Width="50px"></telerik:GridBoundColumn>
+                                                            </Columns>
+                                                        </MasterTableView>
+                                                    </telerik:RadGrid>
+                                                </telerik:RadAjaxPanel>
+                                            </div>
+                                        </div>
+                                    </telerik:RadPageView>
+                                </telerik:RadMultiPage>
+                                
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="panel panel-primary"> 
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Invoice History</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" HorizontalAlign="NotSet" LoadingPanelID="RadAjaxLoadingPanel1">
-                                        <telerik:RadGrid ID="RadGridListInvoice" runat="server"
-                                            AllowFilteringByColumn="False" AllowPaging="True"
-                                            AllowSorting="True" Skin="Metro" CellSpacing="-1"
-                                            GroupingSettings-CaseSensitive="False"
-                                            DataSourceID="SqlDataSourceInvoiceList" EnableHeaderContextAggregatesMenu="True"
-                                            EnableHeaderContextFilterMenu="True"
-                                            EnableHeaderContextMenu="True"
-                                            PageSize="5"
-                                            AllowAutomaticUpdates="True">
-
-                                            <ClientSettings Resizing-AllowResizeToFit="True" Resizing-ResizeGridOnColumnResize="False" Resizing-EnableRealTimeResize="False" Resizing-AllowRowResize="False" Resizing-AllowColumnResize="False" Scrolling-FrozenColumnsCount="3">
-                                                <Scrolling UseStaticHeaders="True" AllowScroll="True" ScrollHeight="200px"></Scrolling>
-                                            </ClientSettings>
-                                            <MasterTableView DataSourceID="SqlDataSourceInvoiceList" EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False" DataKeyNames="id">
-                                                <Columns>
-                                                    <telerik:GridBoundColumn DataField="invoice_number" ReadOnly="True" 
-                                                        HeaderText="Nomor Invoice" SortExpression="invoice_number" 
-                                                        UniqueName="invoice_number" FilterControlAltText="Filter invoice_number column"
-                                                        HeaderStyle-Width="150px"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn DataField="description" ReadOnly="True" 
-                                                        HeaderText="Keterangan" SortExpression="description" 
-                                                        UniqueName="description" FilterControlAltText="Filter description column"
-                                                        HeaderStyle-Width="300px"></telerik:GridBoundColumn>                                                    
-                                                    <telerik:GridBoundColumn DataField="date_invoice" ReadOnly="True" 
-                                                        HeaderText="Tanggal" SortExpression="date_invoice" 
-                                                        UniqueName="date_invoice" DataType="System.DateTime" 
-                                                        FilterControlAltText="Filter date_invoice column"
-                                                        HeaderStyle-Width="180px"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn DataField="amount" ReadOnly="True" 
-                                                        HeaderText="Jumlah" SortExpression="amount" 
-                                                        UniqueName="amount" DataType="System.Decimal" 
-                                                        FilterControlAltText="Filter amount column"
-                                                        HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn DataField="status" ReadOnly="True" 
-                                                        HeaderText="Status" SortExpression="status" 
-                                                        UniqueName="status" FilterControlAltText="Filter status column"
-                                                        HeaderStyle-Width="50px"></telerik:GridBoundColumn>
-                                                </Columns>
-                                            </MasterTableView>
-                                        </telerik:RadGrid>
-                                    </telerik:RadAjaxPanel>
-                                </div>
+                                <hr />
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-12">                                                
+                                <asp:Button ID="btnsubmit" runat="server" Text="Update" CssClass="btn btn-primary pull-right" OnClick="btnsubmit_Click"/>
                             </div>
                         </div>
                         
@@ -249,4 +403,7 @@
     <asp:SqlDataSource ID="SqlDataSourceArea" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, create_uid, create_date, write_date, write_uid, name FROM "public".project_control_area' />
     <asp:SqlDataSource ID="SqlDataSourceSubArea" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, create_uid, create_date, write_date, write_uid, name FROM prasetia_dwidharma."public".project_control_sub_area'></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceSubTipeProject" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, create_uid, create_date, write_date, write_uid, name FROM prasetia_dwidharma."public".project_control_sub_tipe_project'></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceBinderVolume1" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"' />
+    <asp:SqlDataSource ID="SqlDataSourceBinderVolume2" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"' />
+    <asp:SqlDataSource ID="SqlDataSourceBinderVolume3" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"' />
 </asp:Content>
