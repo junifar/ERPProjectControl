@@ -121,6 +121,15 @@ namespace ERPProjectControl {
         protected global::Telerik.Web.UI.RadPageView pageBinderVolume1;
         
         /// <summary>
+        /// MessageTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageTest;
+        
+        /// <summary>
         /// RadGrid1 control.
         /// </summary>
         /// <remarks>

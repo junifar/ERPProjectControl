@@ -205,6 +205,7 @@
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="sale_order_detail.aspx" />
+    <Content Include="Sample.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -240,6 +241,13 @@
     </Compile>
     <Compile Include="sale_order_detail.aspx.designer.cs">
       <DependentUpon>sale_order_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sample.aspx.cs">
+      <DependentUpon>Sample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sample.aspx.designer.cs">
+      <DependentUpon>Sample.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

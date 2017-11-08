@@ -1,5 +1,6 @@
 ﻿using ERPProjectControl.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -115,9 +116,10 @@ namespace ERPProjectControl
             //}
         }
 
-        private void updateVolumeBast(SqlDataSource data_source, RadGrid grid) {         
+        private void updateVolumeBast(SqlDataSource data_source, RadGrid grid) {
             foreach (GridDataItem row in grid.Items)
             {
+                MessageTest.Text += (row["status"].Controls[0] as CheckBox).Checked + "<br/>";
                 CheckBox chkStatus = (CheckBox)row["status"].Controls[0];
                 CheckBox chkMandatory = (CheckBox)row["mandatory"].Controls[0];
                 data_source.UpdateCommand = string.Format(BastModel.queryUpdateBastDocument,
@@ -125,7 +127,7 @@ namespace ERPProjectControl
                     (chkStatus.Checked) ? "true" : "false",
                     (chkMandatory.Checked) ? "true" : "false");
                 data_source.Update();
-            }
+            }  
         }
 
         private string checkNullOrEmpty(String val, String repl) { 

@@ -31,9 +31,19 @@
     </telerik:radscriptmanager>
     <telerik:radajaxmanager ID="RadAjaxManager2" runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlID="RadGrid3">
+            <telerik:AjaxSetting AjaxControlID="RadPivotGridPOByYearStatus">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid3" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadPivotGridPOByYearStatus" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadPivotGridCustomerByProjectType">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadPivotGridCustomerByProjectType" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadPivotGridCountPoByArea">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadPivotGridCountPoByArea" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -99,7 +109,7 @@
             </div>
         </div>--%>
         <div class="row">
-            <div class="col-md-12">
+            <%--<div class="col-md-12">
                  <div class="panel panel-primary"> 
                     <div class="panel-heading">
                         <h3 class="panel-title">PO History</h3>
@@ -128,6 +138,30 @@
                         </div>
                     </div>
                 </div>   
+            </div>--%>
+            <div class="col-md-12">
+                 <div class="panel panel-primary"> 
+                    <div class="panel-heading">
+                        <h3 class="panel-title">PO By Year</h3>
+                    </div>
+                    <div class="panel-body">             
+                        <div class="row">
+                            <%--<div class="col-md-12">--%>
+                                <telerik:RadPivotGrid ID="RadPivotGridPOByYearStatus" runat="server" DataSourceID="POByYearCustomerSqlDataSource">
+                                    <Fields>
+                                        <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
+                                        <telerik:PivotGridRowField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridRowField>
+                                        <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>
+                                        <telerik:PivotGridColumnField UniqueName="project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>                                        
+                                        <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                            <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
+                                        </telerik:PivotGridAggregateField>
+                                    </Fields>                                    
+                                </telerik:RadPivotGrid>
+                            <%--</div>--%>                            
+                        </div>
+                    </div>
+                </div>   
             </div>
             <div class="col-md-12">
                 <telerik:RadTabStrip runat="server" ID="radStrip1" MultiPageID="radMultiPage1" EnableTheming="true"
@@ -153,7 +187,7 @@
                                             <telerik:RadPivotGrid ID="RadPivotGridPOByYearCustomer" runat="server"
                                                 Skin="Bootstrap" DataSourceID="POByYearCustomerSqlDataSource" AggregatesLevel="1">
                                                 <Fields>
-                                                    <telerik:PivotGridColumnField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridColumnField>
+                                                    <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
                                                     <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
                                                         <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
@@ -179,7 +213,7 @@
                                             <telerik:RadPivotGrid ID="RadPivotGrid1" runat="server"
                                                 Skin="Bootstrap" DataSourceID="POByYearCustomerSqlDataSource" AggregatesLevel="1">
                                                 <Fields>
-                                                    <telerik:PivotGridColumnField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridColumnField>
+                                                    <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
                                                     <telerik:PivotGridAggregateField Aggregate="Sum" 
                                                         GrandTotalAggregateFormatString="" CalculationExpression="" 
@@ -201,7 +235,16 @@
                             </div>
                             <div class="panel-body">             
                                 <div class="row">
-                                    Count PO Customer By Project Type
+                                    <telerik:RadPivotGrid ID="RadPivotGridCustomerByProjectType" runat="server" DataSourceID="POByYearCustomerSqlDataSource">
+                                        <Fields>
+                                            <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
+                                            <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                            
+                                            <telerik:PivotGridColumnField UniqueName="column_project_type" DataField="project_type" Caption="Project Type"></telerik:PivotGridColumnField>
+                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                                <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
+                                            </telerik:PivotGridAggregateField>
+                                        </Fields>                                    
+                                    </telerik:RadPivotGrid>
                                 </div>
                             </div>
                         </div>                        
@@ -213,7 +256,16 @@
                             </div>
                             <div class="panel-body">             
                                 <div class="row">
-                                    Count PO Area By Year
+                                    <telerik:RadPivotGrid ID="RadPivotGridCountPoByArea" runat="server" DataSourceID="POByYearCustomerSqlDataSource">
+                                        <Fields>
+                                            <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
+                                            <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                            
+                                            <telerik:PivotGridColumnField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridColumnField>
+                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                                <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
+                                            </telerik:PivotGridAggregateField>
+                                        </Fields>                                    
+                                    </telerik:RadPivotGrid>
                                 </div>
                             </div>
                         </div>                        
@@ -225,7 +277,19 @@
                             </div>
                             <div class="panel-body">             
                                 <div class="row">
-                                    Sum PO Area By Year
+                                    <telerik:RadPivotGrid ID="RadPivotGridSumPOByArea" runat="server"
+                                        Skin="Bootstrap" DataSourceID="POByYearCustomerSqlDataSource" AggregatesLevel="1">
+                                        <Fields>
+                                            <telerik:PivotGridColumnField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridColumnField>
+                                            <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
+                                            <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
+                                            <telerik:PivotGridAggregateField Aggregate="Sum" 
+                                                GrandTotalAggregateFormatString="" CalculationExpression="" 
+                                                UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}">
+                                                <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
+                                            </telerik:PivotGridAggregateField>
+                                        </Fields>
+                                    </telerik:RadPivotGrid>
                                 </div>
                             </div>
                         </div>                        
@@ -236,6 +300,6 @@
             
         </div>
     </section>
-    <asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit FROM prasetia_dwidharma."public".project_control_po_by_year WHERE (periode > 2014)' />
+    <asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area FROM prasetia_dwidharma."public".project_control_po_by_year WHERE (periode > 2014)' />
     <asp:SqlDataSource ID="ChartOpenPOSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, total_open_po, total_po FROM prasetia_dwidharma."public".project_control_po_total_open WHERE (periode > 2014) ORDER BY periode' />
 </asp:Content>

@@ -58,13 +58,13 @@ namespace ERPProjectControl {
         protected global::System.Web.UI.WebControls.Label labelTahun;
         
         /// <summary>
-        /// POTrendChart control.
+        /// RadPivotGridPOByYearStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadHtmlChart POTrendChart;
+        protected global::Telerik.Web.UI.RadPivotGrid RadPivotGridPOByYearStatus;
         
         /// <summary>
         /// radStrip1 control.
@@ -148,6 +148,15 @@ namespace ERPProjectControl {
         protected global::Telerik.Web.UI.RadPageView pageCountPOCustomerByProjectType;
         
         /// <summary>
+        /// RadPivotGridCustomerByProjectType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPivotGrid RadPivotGridCustomerByProjectType;
+        
+        /// <summary>
         /// pageCountPOAreaByYear control.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,15 @@ namespace ERPProjectControl {
         protected global::Telerik.Web.UI.RadPageView pageCountPOAreaByYear;
         
         /// <summary>
+        /// RadPivotGridCountPoByArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPivotGrid RadPivotGridCountPoByArea;
+        
+        /// <summary>
         /// pageSumPOAreaByYear control.
         /// </summary>
         /// <remarks>
@@ -164,6 +182,15 @@ namespace ERPProjectControl {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView pageSumPOAreaByYear;
+        
+        /// <summary>
+        /// RadPivotGridSumPOByArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPivotGrid RadPivotGridSumPOByArea;
         
         /// <summary>
         /// POByYearCustomerSqlDataSource control.
