@@ -10,78 +10,60 @@
 namespace ERPProjectControl {
     
     
-    public partial class Sample {
+    public partial class ContohBAST {
         
         /// <summary>
-        /// RadStyleSheetManager2 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadStyleSheetManager RadStyleSheetManager2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// RadScriptManager2 control.
+        /// scriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadScriptManager RadScriptManager2;
+        protected global::Telerik.Web.UI.RadScriptManager scriptManager;
         
         /// <summary>
-        /// RadAjaxManager2 control.
+        /// ajaxManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager2;
+        protected global::Telerik.Web.UI.RadAjaxManager ajaxManager;
         
         /// <summary>
-        /// RadAjaxLoadingPanel1 control.
+        /// ajaxLoadingPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel ajaxLoadingPanel;
         
         /// <summary>
-        /// GridSample control.
+        /// gridBastProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid GridSample;
+        protected global::Telerik.Web.UI.RadGrid gridBastProject;
         
         /// <summary>
-        /// GridBastProject control.
+        /// sqlDataSourceBastProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid GridBastProject;
-        
-        /// <summary>
-        /// Test control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Test;
-        
-        /// <summary>
-        /// sqlDataSourceProjectDocumentBAST control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlDataSourceProjectDocumentBAST;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlDataSourceBastProject;
     }
 }

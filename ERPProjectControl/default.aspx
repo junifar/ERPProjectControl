@@ -183,7 +183,8 @@
                                 </div>
                                 <div class="panel-body">             
                                     <div class="row">                            
-                                        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" HorizontalAlign="NotSet" LoadingPanelID="RadAjaxLoadingPanel1">
+                                        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" 
+                                            HorizontalAlign="NotSet" LoadingPanelID="RadAjaxLoadingPanel1">
                                             <telerik:RadPivotGrid ID="RadPivotGridPOByYearCustomer" runat="server"
                                                 Skin="Bootstrap" DataSourceID="POByYearCustomerSqlDataSource" AggregatesLevel="1">
                                                 <Fields>

@@ -81,6 +81,7 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="ContohBAST.aspx" />
     <Content Include="default.aspx" />
     <Content Include="dist\js\app.min.js.map" />
     <Content Include="Main-blue.Master" />
@@ -213,6 +214,13 @@
   <ItemGroup>
     <Compile Include="class\BastModel.cs" />
     <Compile Include="class\Constant.cs" />
+    <Compile Include="ContohBAST.aspx.cs">
+      <DependentUpon>ContohBAST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContohBAST.aspx.designer.cs">
+      <DependentUpon>ContohBAST.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

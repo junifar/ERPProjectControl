@@ -36,20 +36,29 @@
                     <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadGrid2">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid2" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadGrid3">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid3" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="RadGridListInvoice">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnsubmit">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="PanelStatus" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="FormViewPO" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="MessageTest" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid2" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid3" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="PanelStatus" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="FormViewPO" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid2" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid3" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelCssClass=""></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadGridListInvoice" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -203,33 +212,57 @@
                                                 <h3 class="panel-title">Binder Volume I</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <asp:Label ID="MessageTest" runat="server" Text="Simulate"></asp:Label>
                                                 <telerik:RadGrid ID="RadGrid1" runat="server"
-                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
-                                                    GroupingSettings-CaseSensitive="False"
-                                                    DataSourceID="SqlDataSourceBinderVolume1" EnableHeaderContextAggregatesMenu="True"
-                                                    EnableHeaderContextFilterMenu="True"
-                                                    EnableHeaderContextMenu="True"
+                                                    AllowSorting="True" Skin="Office2007" CellSpacing="-1"
+                                                    DataSourceID="SqlDataSourceBinderVolume1"
                                                     PageSize="20"
-                                                    OnItemDataBound="RadGrid1_ItemDataBound"
-                                                    AllowMultiRowEdit="true"
                                                     AllowAutomaticUpdates="true">
-
-                                                    <GroupingSettings CaseSensitive="False" CollapseAllTooltip="Collapse all groups" />
-                                                    <MasterTableView AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume1" EditMode="Batch" 
-                                                        EnableHeaderContextAggregatesMenu="True">
+                                                    <MasterTableView AutoGenerateColumns="False" 
+                                                        DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume1" EditMode="Batch" 
+                                                        EnableHeaderContextAggregatesMenu="True"
+                                                        CommandItemDisplay="TopAndBottom">
+                                                        <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
                                                         <SortExpressions>
                                                             <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
                                                         </SortExpressions>
-                                                        <BatchEditingSettings EditType="Cell" />
+                                                        <BatchEditingSettings EditType="Row" />
                                                         <Columns>
-                                                            <telerik:GridBoundColumn DataField="id" Display="false" FilterControlAltText="Filter id column" HeaderText="id" ReadOnly="True" SortExpression="id" UniqueName="id">
-                                                            </telerik:GridBoundColumn>
-                                                            <telerik:GridBoundColumn DataField="name" FilterControlAltText="Filter name column" HeaderText="Name" ReadOnly="False" SortExpression="name" UniqueName="name">
-                                                            </telerik:GridBoundColumn>
-                                                            <telerik:GridCheckBoxColumn FilterControlAltText="Filter status column" HeaderStyle-Width="100px" HeaderText="Status" ItemStyle-HorizontalAlign="Center" ReadOnly="False" SortExpression="status" UniqueName="status">
-                                                            </telerik:GridCheckBoxColumn>
-                                                            <telerik:GridCheckBoxColumn FilterControlAltText="Filter mandatory column" HeaderStyle-Width="100px" HeaderText="Mandatory" ItemStyle-HorizontalAlign="Center" ReadOnly="False" SortExpression="mandatory" UniqueName="mandatory"></telerik:GridCheckBoxColumn>
+                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" HeaderText="id" 
+                                                                SortExpression="id" UniqueName="id" DataType="System.Int32" 
+                                                                FilterControlAltText="Filter id column"
+                                                                Display="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridBoundColumn DataField="binder_name" ReadOnly="true" 
+                                                                HeaderText="Binder Name" SortExpression="binder_name" 
+                                                                UniqueName="binder_name" FilterControlAltText="Filter binder_name column"
+                                                                AllowFiltering="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridTemplateColumn DataField="status" HeaderText="Status" 
+                                                                UniqueName="status" HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxStatus" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBox1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxStatusEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
+                                                            <telerik:GridTemplateColumn DataField="mandatory" HeaderText="Mandatory" UniqueName="mandatory"
+                                                                HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxMandatoryEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
                                                         </Columns>
                                                     </MasterTableView>
                                                 </telerik:RadGrid>
@@ -243,39 +276,55 @@
                                             </div>
                                             <div class="panel-body">
                                                 <telerik:RadGrid ID="RadGrid2" runat="server"
-                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
-                                                    GroupingSettings-CaseSensitive="False"
-                                                    DataSourceID="SqlDataSourceBinderVolume2" EnableHeaderContextAggregatesMenu="True"
-                                                    EnableHeaderContextFilterMenu="True"
-                                                    EnableHeaderContextMenu="True"
+                                                    AllowSorting="True" Skin="Office2007" CellSpacing="-1"
+                                                    DataSourceID="SqlDataSourceBinderVolume2"
                                                     PageSize="20"
-                                                    OnItemDataBound="RadGrid1_ItemDataBound"
-                                                    AllowMultiRowEdit="true">
+                                                    AllowAutomaticUpdates="true">
 
                                                     <MasterTableView DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume2" 
                                                         EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False"
-                                                        EditMode="Batch">
+                                                        EditMode="Batch" CommandItemDisplay="TopAndBottom">
+                                                        <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
                                                         <SortExpressions>
                                                             <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
                                                         </SortExpressions>
                                                         <Columns>            
-                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" 
-                                                                HeaderText="id" SortExpression="id" 
-                                                                UniqueName="id" FilterControlAltText="Filter id column"
-                                                                Display="false"></telerik:GridBoundColumn>                                                    
-                                                            <telerik:GridBoundColumn DataField="name" ReadOnly="True" 
-                                                                HeaderText="Name" SortExpression="name" 
-                                                                UniqueName="name" FilterControlAltText="Filter name column"></telerik:GridBoundColumn>
-                                                            <telerik:GridCheckBoxColumn HeaderText="Status" 
-                                                                SortExpression="status" UniqueName="status" 
-                                                                FilterControlAltText="Filter status column" ReadOnly="False"
-                                                                HeaderStyle-Width="100px"
-                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
-                                                            <telerik:GridCheckBoxColumn HeaderText="Mandatory" 
-                                                                SortExpression="mandatory" UniqueName="mandatory" 
-                                                                FilterControlAltText="Filter mandatory column" ReadOnly="False"
-                                                                HeaderStyle-Width="100px"
-                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" HeaderText="id" 
+                                                                SortExpression="id" UniqueName="id" DataType="System.Int32" 
+                                                                FilterControlAltText="Filter id column"
+                                                                Display="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridBoundColumn DataField="binder_name" ReadOnly="true" 
+                                                                HeaderText="Binder Name" SortExpression="binder_name" 
+                                                                UniqueName="binder_name" FilterControlAltText="Filter binder_name column"
+                                                                AllowFiltering="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridTemplateColumn DataField="status" HeaderText="Status" 
+                                                                UniqueName="status" HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxStatus" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBox1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxStatusEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
+                                                            <telerik:GridTemplateColumn DataField="mandatory" HeaderText="Mandatory" UniqueName="mandatory"
+                                                                HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxMandatoryEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
                                                         </Columns>
                                                     </MasterTableView>
                                                 </telerik:RadGrid>
@@ -289,37 +338,56 @@
                                             </div>
                                             <div class="panel-body">
                                                 <telerik:RadGrid ID="RadGrid3" runat="server"
-                                                    AllowSorting="True" Skin="Metro" CellSpacing="-1"
-                                                    GroupingSettings-CaseSensitive="False"
-                                                    DataSourceID="SqlDataSourceBinderVolume3" EnableHeaderContextAggregatesMenu="True"
-                                                    EnableHeaderContextFilterMenu="True"
-                                                    EnableHeaderContextMenu="True"
+                                                    AllowSorting="True" Skin="Office2007" CellSpacing="-1"
+                                                    DataSourceID="SqlDataSourceBinderVolume3" 
                                                     PageSize="20"
-                                                    OnItemDataBound="RadGrid1_ItemDataBound"
-                                                    AllowMultiRowEdit="true">
+                                                    AllowAutomaticUpdates="true">
 
                                                     <MasterTableView DataKeyNames="id" DataSourceID="SqlDataSourceBinderVolume3" 
                                                         EnableHeaderContextAggregatesMenu="True" AutoGenerateColumns="False"
-                                                        EditMode="Batch">
+                                                        EditMode="Batch" CommandItemDisplay="TopAndBottom">
+                                                        <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
                                                         <SortExpressions>
                                                             <telerik:GridSortExpression FieldName="id" SortOrder="Ascending" />
                                                         </SortExpressions>
+                                                        <BatchEditingSettings EditType="Row" />
                                                         <Columns>                                                                
-                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" 
-                                                                HeaderText="id" SortExpression="id" 
-                                                                UniqueName="id" FilterControlAltText="Filter id column"
+                                                            <telerik:GridBoundColumn DataField="id" ReadOnly="True" HeaderText="id" 
+                                                                SortExpression="id" UniqueName="id" DataType="System.Int32" 
+                                                                FilterControlAltText="Filter id column"
                                                                 Display="false"></telerik:GridBoundColumn>
-                                                            <telerik:GridBoundColumn DataField="name" ReadOnly="True" HeaderText="Name" SortExpression="name" UniqueName="name" FilterControlAltText="Filter name column"></telerik:GridBoundColumn>
-                                                            <telerik:GridCheckBoxColumn HeaderText="Status" 
-                                                                SortExpression="status" UniqueName="status" 
-                                                                FilterControlAltText="Filter status column" ReadOnly="False"
-                                                                HeaderStyle-Width="100px"
-                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
-                                                            <telerik:GridCheckBoxColumn HeaderText="Mandatory" 
-                                                                SortExpression="mandatory" UniqueName="mandatory" 
-                                                                FilterControlAltText="Filter mandatory column" ReadOnly="False"
-                                                                HeaderStyle-Width="100px"
-                                                                ItemStyle-HorizontalAlign="Center"></telerik:GridCheckBoxColumn>
+                                                            <telerik:GridBoundColumn DataField="binder_name" ReadOnly="true" 
+                                                                HeaderText="Binder Name" SortExpression="binder_name" 
+                                                                UniqueName="binder_name" FilterControlAltText="Filter binder_name column"
+                                                                AllowFiltering="false"></telerik:GridBoundColumn>
+                                                            <telerik:GridTemplateColumn DataField="status" HeaderText="Status" 
+                                                                UniqueName="status" HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxStatus" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("status").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBox1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxStatusEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
+                                                            <telerik:GridTemplateColumn DataField="mandatory" HeaderText="Mandatory" UniqueName="mandatory"
+                                                                HeaderStyle-Width="80px" AllowFiltering="false" ItemStyle-HorizontalAlign="Center">
+                                                                <ItemTemplate>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() == "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory" Enabled="false" Checked='true' onclick="checkBoxClick(this, event);" />
+                                                                    </div>
+                                                                    <div runat="server" visible='<%# Eval("mandatory").ToString() != "1" %>'>
+                                                                        <asp:CheckBox runat="server" ID="CheckBoxMandatory1" Enabled="false" Checked='false' onclick="checkBoxClick(this, event);" />
+                                                                    </div>                                        
+                                                                </ItemTemplate>
+                                                                <EditItemTemplate>
+                                                                    <asp:CheckBox runat="server" ID="CheckBoxMandatoryEdit" />
+                                                                </EditItemTemplate>
+                                                            </telerik:GridTemplateColumn>
                                                         </Columns>
                                                     </MasterTableView>
                                                 </telerik:RadGrid>
@@ -393,11 +461,6 @@
                         </div>
                         
                     </div>
-                    <%--<div class="panel-footer">
-                        <div class="form-group col-sm-8">                                                
-                            <asp:Button ID="btnsubmit" runat="server" Text="Update" CssClass="btn btn-primary pull-right"/>
-                        </div>
-                    </div>--%>
                 </div>
             </div>
         </div>
@@ -410,14 +473,43 @@
     <asp:SqlDataSource ID="SqlDataSourceBinderVolume1" runat="server"
         ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>'
         ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>'
-        SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"'
+        SelectCommand='SELECT prasetia_dwidharma."public".project_document_bast.*, prasetia_dwidharma."public".sale_order_line.id AS order_line_id, prasetia_dwidharma."public".project_document_bast_template.name AS binder_name FROM { oj { oj prasetia_dwidharma."public".project_document_bast LEFT OUTER JOIN prasetia_dwidharma."public".project_document_bast_template ON prasetia_dwidharma."public".project_document_bast.name = prasetia_dwidharma."public".project_document_bast_template.id } LEFT OUTER JOIN prasetia_dwidharma."public".sale_order_line ON prasetia_dwidharma."public".project_document_bast.project_id = prasetia_dwidharma."public".sale_order_line.project_id } WHERE (prasetia_dwidharma."public".sale_order_line.id = ?) AND (prasetia_dwidharma."public".project_document_bast_template.binder_id = 1)'
         UpdateCommand='UPDATE prasetia_dwidharma."public".project_document_bast SET status = ?, mandatory = ? WHERE (id = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="305" Name="id" QueryStringField="id" Type="Int32" />
+        </SelectParameters>
         <UpdateParameters>            
-            <asp:Parameter Name="status" Type="Boolean" />
-            <asp:Parameter Name="mandatory" Type="Boolean" />
-            <asp:Parameter Name="id" Type="Int32" />
+            <asp:Parameter Name="status" Type="String"></asp:Parameter>
+            <asp:Parameter Name="mandatory" Type="String"></asp:Parameter>
+            <asp:Parameter Name="id" Type="Int32"></asp:Parameter>
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSourceBinderVolume2" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"' />
-    <asp:SqlDataSource ID="SqlDataSourceBinderVolume3" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_document_bast."id", CASE WHEN "public".project_document_bast.mandatory THEN 1 ELSE 0 END AS mandatory, "public".project_document_bast.project_id, CASE WHEN "public".project_document_bast.status THEN 1 ELSE 0 END AS status, "public".project_document_bast_template."name" FROM "public".project_document_bast LEFT JOIN "public".project_document_bast_template ON "public".project_document_bast."name" = "public".project_document_bast_template."id"' />
+    <asp:SqlDataSource ID="SqlDataSourceBinderVolume2" runat="server" 
+        ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' 
+        ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' 
+        SelectCommand='SELECT prasetia_dwidharma."public".project_document_bast.*, prasetia_dwidharma."public".sale_order_line.id AS order_line_id, prasetia_dwidharma."public".project_document_bast_template.name AS binder_name FROM { oj { oj prasetia_dwidharma."public".project_document_bast LEFT OUTER JOIN prasetia_dwidharma."public".project_document_bast_template ON prasetia_dwidharma."public".project_document_bast.name = prasetia_dwidharma."public".project_document_bast_template.id } LEFT OUTER JOIN prasetia_dwidharma."public".sale_order_line ON prasetia_dwidharma."public".project_document_bast.project_id = prasetia_dwidharma."public".sale_order_line.project_id } WHERE (prasetia_dwidharma."public".sale_order_line.id = ?) AND (prasetia_dwidharma."public".project_document_bast_template.binder_id =2)'
+        UpdateCommand='UPDATE prasetia_dwidharma."public".project_document_bast SET status = ?, mandatory = ? WHERE (id = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="305" Name="id" QueryStringField="id" Type="Int32" />
+        </SelectParameters>
+        <UpdateParameters>            
+            <asp:Parameter Name="status" Type="String"></asp:Parameter>
+            <asp:Parameter Name="mandatory" Type="String"></asp:Parameter>
+            <asp:Parameter Name="id" Type="Int32"></asp:Parameter>
+        </UpdateParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceBinderVolume3" runat="server" 
+        ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' 
+        ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' 
+        SelectCommand='SELECT prasetia_dwidharma."public".project_document_bast.*, prasetia_dwidharma."public".sale_order_line.id AS order_line_id, prasetia_dwidharma."public".project_document_bast_template.name AS binder_name FROM { oj { oj prasetia_dwidharma."public".project_document_bast LEFT OUTER JOIN prasetia_dwidharma."public".project_document_bast_template ON prasetia_dwidharma."public".project_document_bast.name = prasetia_dwidharma."public".project_document_bast_template.id } LEFT OUTER JOIN prasetia_dwidharma."public".sale_order_line ON prasetia_dwidharma."public".project_document_bast.project_id = prasetia_dwidharma."public".sale_order_line.project_id } WHERE (prasetia_dwidharma."public".sale_order_line.id = ?) AND (prasetia_dwidharma."public".project_document_bast_template.binder_id =3)'
+        UpdateCommand='UPDATE prasetia_dwidharma."public".project_document_bast SET status = ?, mandatory = ? WHERE (id = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="305" Name="id" QueryStringField="id" Type="Int32" />
+        </SelectParameters>
+        <UpdateParameters>            
+            <asp:Parameter Name="status" Type="String"></asp:Parameter>
+            <asp:Parameter Name="mandatory" Type="String"></asp:Parameter>
+            <asp:Parameter Name="id" Type="Int32"></asp:Parameter>
+        </UpdateParameters>
+    </asp:SqlDataSource>
 </asp:Content>
