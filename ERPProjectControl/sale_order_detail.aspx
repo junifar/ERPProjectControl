@@ -62,8 +62,6 @@
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
-        <AjaxSettings>
-        </AjaxSettings>
     </telerik:radajaxmanager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Metro"></telerik:RadAjaxLoadingPanel>
     <section class="content-header container">
@@ -88,103 +86,107 @@
                     </div>
                     <div class="panel-body">             
                         <div class="row">
-                            <asp:FormView ID="FormViewPO" runat="server" DataKeyNames="id" DataSourceID="SqlDataSourceSalesOrder" DefaultMode="Edit" RenderOuterTable="false">
+                            <asp:FormView ID="FormViewPO" runat="server" 
+                                DataKeyNames="id" DataSourceID="SqlDataSourceSalesOrder" DefaultMode="Edit">
                                 <EditItemTemplate>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="No SO" runat="server" For="txtnoso" />
-                                                    <asp:TextBox runat="server" ID="txtnoso" class="form-control input-sm" placeholder="No SO" Text='<%# Eval("no_so") %>' ReadOnly="True"></asp:TextBox>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <asp:Label Text="No PO" runat="server" For="txtnopo" />
-                                                    <asp:TextBox runat="server" ID="txtnopo" class="form-control input-sm" placeholder="No PO" Text='<%# Eval("no_po") %>' ReadOnly="True"></asp:TextBox>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <asp:Label Text="Tanggal Terima PO" runat="server" For="txttglpo" />
-                                                    <asp:TextBox runat="server" ID="txttglpo" class="form-control input-sm" placeholder="Tanggal Terima PO" Text='<%# Eval("date_order","{0:dd-MMM-yyyy}") %>' 
-                                                        ReadOnly="True"></asp:TextBox>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="No SO" runat="server" For="txtnoso" />
+                                                        <asp:TextBox runat="server" ID="txtnoso" class="form-control input-sm" placeholder="No SO" Text='<%# Eval("no_so") %>' ReadOnly="True"></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <asp:Label Text="No PO" runat="server" For="txtnopo" />
+                                                        <asp:TextBox runat="server" ID="txtnopo" class="form-control input-sm" placeholder="No PO" Text='<%# Eval("no_po") %>' ReadOnly="True"></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <asp:Label Text="Tanggal Terima PO" runat="server" For="txttglpo" />
+                                                        <asp:TextBox runat="server" ID="txttglpo" class="form-control input-sm" placeholder="Tanggal Terima PO" Text='<%# Eval("date_order","{0:dd-MMM-yyyy}") %>' 
+                                                            ReadOnly="True"></asp:TextBox>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <hr />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <hr />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                             <div class="col-md-6">
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Site ID Customer" runat="server" For="txtSiteIdCustomer" />
-                                                    <asp:TextBox runat="server" ID="txtSiteIdCustomer" class="form-control input-sm" placeholder="Site ID Customer" Text='<%# Eval("site_id_customer") %>'></asp:TextBox>
+                                            <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Site ID Customer" runat="server" For="txtSiteIdCustomer" />
+                                                        <asp:TextBox runat="server" ID="txtSiteIdCustomer" class="form-control input-sm" placeholder="Site ID Customer" Text='<%# Eval("site_id_customer") %>'></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Project ID" runat="server" For="txtProjectID" />
+                                                        <asp:TextBox runat="server" ID="txtProjectID" class="form-control input-sm" placeholder="Project ID" Text='<%# Eval("project_id_prasetia") %>' ReadOnly="True"></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <asp:Label Text="Site Name" runat="server" For="txtSiteName" />
+                                                        <asp:TextBox runat="server" ID="txtSiteName" class="form-control input-sm" placeholder="Site Name" Text='<%# Eval("site_name") %>' ReadOnly="True"></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Area" runat="server" For="ddlArea" />
+                                                        <telerik:RadDropDownList ID="ddlArea" runat="server"
+                                                            DataSourceID="SqlDataSourceArea"
+                                                            DataTextField="NAME" DataValueField="ID"
+                                                            Skin="Bootstrap" EnableTheming="False"
+                                                            Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("area_id") %>'>
+                                                        </telerik:RadDropDownList>
+                                                    </div>                                                      
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Sub Area" runat="server" For="ddlSubArea" />
+                                                        <telerik:RadDropDownList ID="ddlSubArea" runat="server"
+                                                            DataSourceID="SqlDataSourceSubArea"
+                                                            DataTextField="NAME" DataValueField="ID"
+                                                            Skin="Bootstrap" EnableTheming="False"
+                                                            Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("sub_area_id") %>'>
+                                                        </telerik:RadDropDownList>
+                                                    </div>                    
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Tipe Project" runat="server" For="txtTipeProject" />
+                                                        <asp:TextBox runat="server" ID="txtTipeProject" class="form-control input-sm" placeholder="Tipe Project" Text='<%# Eval("project_type") %>' ReadOnly="True"></asp:TextBox>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label Text="Sub Tipe Project" runat="server" For="ddlSubTipeProject" />
+                                                        <telerik:RadComboBox ID="ddl_sub_tipe_project" runat="server"
+                                                            DataSourceID="SqlDataSourceSubTipeProject"
+                                                            DataTextField="NAME" DataValueField="ID"
+                                                            Skin="Bootstrap" EnableTheming="False"
+                                                            Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("sub_tipe_project_id") %>'>
+                                                        </telerik:RadComboBox>
+                                                    </div>                                              
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Project ID" runat="server" For="txtProjectID" />
-                                                    <asp:TextBox runat="server" ID="txtProjectID" class="form-control input-sm" placeholder="Project ID" Text='<%# Eval("project_id_prasetia") %>' ReadOnly="True"></asp:TextBox>
+                                                <div class="col-md-6">
+                                                    <div class="form-group col-md-12">
+                                                        <asp:Label Text="Deskripsi PO" runat="server" For="txtDeskripsiPO" />
+                                                        <asp:TextBox runat="server" ID="txtDeskripsiPO" class="form-control input-sm" placeholder="Deskripsi PO" Text='<%# Eval("sales_order_description") %>'
+                                                            TextMode="MultiLine" Height="110px"></asp:TextBox>
+                                                    </div>  
+                                                    <div class="form-group col-md-12">
+                                                        <asp:Label Text="Status PO" runat="server" For="ddlStatusPO" />
+                                                        <telerik:RadDropDownList ID="ddlStatusPO" runat="server"
+                                                            Skin="Bootstrap" EnableTheming="False"
+                                                            Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("project_control_state_line") %>'>
+                                                            <Items>
+                                                                <telerik:DropDownListItem runat="server" Text="Open" Value="OPEN"></telerik:DropDownListItem>
+                                                                <telerik:DropDownListItem runat="server" Text="Closed" Value="CLOSED"></telerik:DropDownListItem>
+                                                                <telerik:DropDownListItem runat="server" Text="Cancel" Value="CANCEL"></telerik:DropDownListItem>
+                                                            </Items>
+                                                        </telerik:RadDropDownList>
+                                                    </div>              
                                                 </div>
-                                                <div class="form-group col-md-12">
-                                                    <asp:Label Text="Site Name" runat="server" For="txtSiteName" />
-                                                    <asp:TextBox runat="server" ID="txtSiteName" class="form-control input-sm" placeholder="Site Name" Text='<%# Eval("site_name") %>' ReadOnly="True"></asp:TextBox>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <hr />
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Area" runat="server" For="ddlArea" />
-                                                    <telerik:RadDropDownList ID="ddlArea" runat="server"
-                                                        DataSourceID="SqlDataSourceArea"
-                                                        DataTextField="NAME" DataValueField="ID"
-                                                        Skin="Bootstrap" EnableTheming="False"
-                                                        Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("area_id") %>'>
-                                                    </telerik:RadDropDownList>
-                                                </div>                                                      
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Sub Area" runat="server" For="ddlSubArea" />
-                                                    <telerik:RadDropDownList ID="ddlSubArea" runat="server"
-                                                        DataSourceID="SqlDataSourceSubArea"
-                                                        DataTextField="NAME" DataValueField="ID"
-                                                        Skin="Bootstrap" EnableTheming="False"
-                                                        Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("sub_area_id") %>'>
-                                                    </telerik:RadDropDownList>
-                                                </div>                    
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Tipe Project" runat="server" For="txtTipeProject" />
-                                                    <asp:TextBox runat="server" ID="txtTipeProject" class="form-control input-sm" placeholder="Tipe Project" Text='<%# Eval("project_type") %>' ReadOnly="True"></asp:TextBox>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:Label Text="Sub Tipe Project" runat="server" For="ddlSubTipeProject" />
-                                                    <telerik:RadDropDownList ID="ddl_sub_tipe_project" runat="server"
-                                                        DataSourceID="SqlDataSourceSubTipeProject"
-                                                        DataTextField="NAME" DataValueField="ID"
-                                                        Skin="Bootstrap" EnableTheming="False"
-                                                        Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("sub_tipe_project_id") %>'>
-                                                    </telerik:RadDropDownList>
-                                                </div>                                              
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group col-md-12">
-                                                    <asp:Label Text="Deskripsi PO" runat="server" For="txtDeskripsiPO" />
-                                                    <asp:TextBox runat="server" ID="txtDeskripsiPO" class="form-control input-sm" placeholder="Deskripsi PO" Text='<%# Eval("sales_order_description") %>'
-                                                        TextMode="MultiLine" Height="110px"></asp:TextBox>
-                                                </div>  
-                                                <div class="form-group col-md-12">
-                                                    <asp:Label Text="Status PO" runat="server" For="ddlStatusPO" />
-                                                    <telerik:RadDropDownList ID="ddlStatusPO" runat="server"
-                                                        Skin="Bootstrap" EnableTheming="False"
-                                                        Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("project_control_state_line") %>'>
-                                                        <Items>
-                                                            <telerik:DropDownListItem runat="server" Text="Open" Value="OPEN"></telerik:DropDownListItem>
-                                                            <telerik:DropDownListItem runat="server" Text="Closed" Value="CLOSED"></telerik:DropDownListItem>
-                                                            <telerik:DropDownListItem runat="server" Text="Cancel" Value="CANCEL"></telerik:DropDownListItem>
-                                                        </Items>
-                                                    </telerik:RadDropDownList>
-                                                </div>              
-                                            </div>
+                                            </div>                                  
                                         </div> 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <hr />
-                                            </div>
-                                        </div>                                  
-                                    </div>                                    
+                                    </div>
+                                                                       
                                 </EditItemTemplate>
                                 
                             </asp:FormView>
@@ -428,12 +430,12 @@
                                                                     HeaderText="Tanggal" SortExpression="date_invoice" 
                                                                     UniqueName="date_invoice" DataType="System.DateTime" 
                                                                     FilterControlAltText="Filter date_invoice column"
-                                                                    HeaderStyle-Width="180px"></telerik:GridBoundColumn>
+                                                                    HeaderStyle-Width="180px" DataFormatString="{0:dd-MMM-yyyy}"></telerik:GridBoundColumn>
                                                                 <telerik:GridBoundColumn DataField="amount" ReadOnly="True" 
                                                                     HeaderText="Jumlah" SortExpression="amount" 
                                                                     UniqueName="amount" DataType="System.Decimal" 
                                                                     FilterControlAltText="Filter amount column"
-                                                                    HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                                                    HeaderStyle-Width="100px" DataFormatString="{0:N}"></telerik:GridBoundColumn>
                                                                 <telerik:GridBoundColumn DataField="status" ReadOnly="True" 
                                                                     HeaderText="Status" SortExpression="status" 
                                                                     UniqueName="status" FilterControlAltText="Filter status column"
