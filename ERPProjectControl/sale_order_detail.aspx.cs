@@ -21,18 +21,25 @@ namespace ERPProjectControl
             {
                 if (Request.QueryString["id"].ToString() != "0")
                 {
-                    SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, Request.QueryString["id"]);
+                    //SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, Request.QueryString["id"]);
 
                     DataView dv = (DataView)SqlDataSourceSalesOrder.Select(DataSourceSelectArguments.Empty);
-                    DataRowView drv = dv[0];
-                    site_id = drv["site_id"].ToString();
-                    project_id = drv["project_id"].ToString();
+                    if (dv.Count > 0)
+                    {
+                        DataRowView drv = dv[0];
+                        site_id = drv["site_id"].ToString();
+                        project_id = drv["project_id"].ToString();
 
-                    loadInvoiceList((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
-                    loadBastProject((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
+                        loadInvoiceList((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
+                        loadBastProject((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
 
-                    LabelProjectID.Text = drv["project_id_prasetia"].ToString();
-                    LabelSiteID.Text = drv["site_name"].ToString();
+                        LabelProjectID.Text = drv["project_id_prasetia"].ToString();
+                        LabelSiteID.Text = drv["site_name"].ToString();
+                    }
+                    else {
+                        SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, 0);
+                        RadGridListInvoice.Visible = false;
+                    }                    
                 }
                 else {
                     SqlDataSourceSalesOrder.SelectCommand = string.Format(Constant.Constant.querySaleOrder, 0);
@@ -85,7 +92,7 @@ namespace ERPProjectControl
 
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSaleOrderLine,
                 Request.QueryString["id"],
-                checkNullOrEmpty(deskripsi_po, "''"),
+                checkNullOrEmpty(deskripsi_po, ""),
                 (checkNullOrEmpty(status_po, "NULL") == "NULL") ? "NULL" : "'" + status_po + "'");
             SqlDataSourceArea.Update();
             PanelStatus.Visible = true;

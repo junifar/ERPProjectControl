@@ -151,12 +151,12 @@
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <asp:Label Text="Sub Tipe Project" runat="server" For="ddlSubTipeProject" />
-                                                        <telerik:RadComboBox ID="ddl_sub_tipe_project" runat="server"
+                                                        <telerik:RadDropDownList ID="ddl_sub_tipe_project" runat="server"
                                                             DataSourceID="SqlDataSourceSubTipeProject"
                                                             DataTextField="NAME" DataValueField="ID"
                                                             Skin="Bootstrap" EnableTheming="False"
                                                             Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("sub_tipe_project_id") %>'>
-                                                        </telerik:RadComboBox>
+                                                        </telerik:RadDropDownList>
                                                     </div>                                              
                                                 </div>
                                                 <div class="col-md-6">
@@ -194,6 +194,12 @@
                                 <asp:Label Text="ID" runat="server" For="txtid" />
                                 <asp:TextBox runat="server" ID="txtid" class="form-control input-sm" placeholder="ID" Text='<%# Eval("PREVENTIVE_CODE") %>' ReadOnly="True"></asp:TextBox>
                             </div>--%>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-sm-12">                                                
+                                <asp:Button ID="btnsubmit" runat="server" Text="Update" CssClass="btn btn-primary pull-right" OnClick="btnsubmit_Click"/>
+                            </div>
                         </div>
                         
                         <div class="row">
@@ -456,18 +462,17 @@
                                 <hr />
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-sm-12">                                                
-                                <asp:Button ID="btnsubmit" runat="server" Text="Update" CssClass="btn btn-primary pull-right" OnClick="btnsubmit_Click"/>
-                            </div>
-                        </div>
                         
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <asp:SqlDataSource ID="SqlDataSourceSalesOrder" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_control_sales_order.id, "public".project_control_sales_order.no_so, "public".project_control_sales_order.no_po, "public".project_control_sales_order.date_order, "public".project_control_sales_order.customer, "public".project_control_sales_order.site_id_customer, "public".project_control_sales_order.project_id_prasetia, "public".project_control_sales_order.site_name, "public".project_control_sales_order.area_name, "public".project_control_sales_order.sub_area_name, "public".project_control_sales_order.nilai_project, "public".project_control_sales_order.project_type, "public".project_control_sales_order.sub_project_type, "public".project_control_sales_order.project_control_state_line, "public".project_control_sales_order.sales_order_description, "public".project_control_sales_order.project_id, area_id, sub_area_id, sub_tipe_project_id, site_id FROM prasetia_dwidharma."public".project_control_sales_order'></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceSalesOrder" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_control_sales_order.id, "public".project_control_sales_order.no_so, "public".project_control_sales_order.no_po, "public".project_control_sales_order.date_order, "public".project_control_sales_order.customer, "public".project_control_sales_order.site_id_customer, "public".project_control_sales_order.project_id_prasetia, "public".project_control_sales_order.site_name, "public".project_control_sales_order.area_name, "public".project_control_sales_order.sub_area_name, "public".project_control_sales_order.nilai_project, "public".project_control_sales_order.project_type, "public".project_control_sales_order.sub_project_type, "public".project_control_sales_order.project_control_state_line, "public".project_control_sales_order.sales_order_description, "public".project_control_sales_order.project_id, area_id, sub_area_id, sub_tipe_project_id, site_id FROM prasetia_dwidharma."public".project_control_sales_order WHERE ("public".project_control_sales_order.id = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter QueryStringField="id" DefaultValue="0" Name="?"></asp:QueryStringParameter>
+        </SelectParameters>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceInvoiceList" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".account_invoice_line.id, "public".account_invoice.name AS invoice_number, "public".account_analytic_account.name AS project_id, "public".account_invoice_line.name AS description, "public".account_invoice_line.price_subtotal AS amount, "public".account_invoice.state AS status, "public".account_invoice.date_invoice FROM { oj { oj { oj prasetia_dwidharma."public".account_invoice_line LEFT OUTER JOIN prasetia_dwidharma."public".account_invoice ON "public".account_invoice_line.invoice_id = "public".account_invoice.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_project ON "public".account_invoice_line.project_id = "public".project_project.id } LEFT OUTER JOIN prasetia_dwidharma."public".account_analytic_account ON "public".project_project.analytic_account_id = "public".account_analytic_account.id }' />
     <asp:SqlDataSource ID="SqlDataSourceArea" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, create_uid, create_date, write_date, write_uid, name FROM "public".project_control_area' />
     <asp:SqlDataSource ID="SqlDataSourceSubArea" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, create_uid, create_date, write_date, write_uid, name FROM prasetia_dwidharma."public".project_control_sub_area'></asp:SqlDataSource>

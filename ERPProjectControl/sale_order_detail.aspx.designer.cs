@@ -94,6 +94,15 @@ namespace ERPProjectControl {
         protected global::System.Web.UI.WebControls.FormView FormViewPO;
         
         /// <summary>
+        /// btnsubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnsubmit;
+        
+        /// <summary>
         /// radStrip1 control.
         /// </summary>
         /// <remarks>
@@ -191,15 +200,6 @@ namespace ERPProjectControl {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid RadGridListInvoice;
-        
-        /// <summary>
-        /// btnsubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsubmit;
         
         /// <summary>
         /// SqlDataSourceSalesOrder control.
