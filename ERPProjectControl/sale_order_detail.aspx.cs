@@ -77,6 +77,7 @@ namespace ERPProjectControl
             var sub_tipe_project = ((RadDropDownList)FormViewPO.FindControl("ddl_sub_tipe_project")).SelectedValue;
             var deskripsi_po = ((TextBox)FormViewPO.FindControl("txtDeskripsiPO")).Text;
             var status_po = ((RadDropDownList)FormViewPO.FindControl("ddlStatusPO")).SelectedValue;
+            var check_status_po = ((RadDropDownList)FormViewPO.FindControl("ddlListPOFilter")).SelectedValue;
 
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSite,
                 site_id,
@@ -93,7 +94,8 @@ namespace ERPProjectControl
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSaleOrderLine,
                 Request.QueryString["id"],
                 checkNullOrEmpty(deskripsi_po, ""),
-                (checkNullOrEmpty(status_po, "NULL") == "NULL") ? "NULL" : "'" + status_po + "'");
+                (checkNullOrEmpty(status_po, "NULL") == "NULL") ? "NULL" : "'" + status_po + "'",
+                (checkNullOrEmpty(check_status_po, "NULL") == "NULL") ? "NULL" : "'" + check_status_po + "'");
             SqlDataSourceArea.Update();
             PanelStatus.Visible = true;
             FormViewPO.DataBind();

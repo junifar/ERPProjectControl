@@ -188,8 +188,9 @@
                                             <telerik:RadPivotGrid ID="RadPivotGridPOByYearCustomer" runat="server"
                                                 Skin="Bootstrap" DataSourceID="POByYearCustomerSqlDataSource" AggregatesLevel="1">
                                                 <Fields>
-                                                    <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
+                                                    <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>                                                    
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
+                                                    <telerik:PivotGridColumnField UniqueName="column_project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>
                                                     <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
                                                         <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                                     </telerik:PivotGridAggregateField>
@@ -216,6 +217,7 @@
                                                 <Fields>
                                                     <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
+                                                    <telerik:PivotGridColumnField UniqueName="column_project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>
                                                     <telerik:PivotGridAggregateField Aggregate="Sum" 
                                                         GrandTotalAggregateFormatString="" CalculationExpression="" 
                                                         UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}">
@@ -303,4 +305,7 @@
     </section>
     <asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area FROM prasetia_dwidharma."public".project_control_po_by_year WHERE (periode > 2014)' />
     <asp:SqlDataSource ID="ChartOpenPOSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, total_open_po, total_po FROM prasetia_dwidharma."public".project_control_po_total_open WHERE (periode > 2014) ORDER BY periode' />
+
+    <%--<asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area FROM prasetia_dwidharma."public".project_control_po_by_year' />
+    <asp:SqlDataSource ID="ChartOpenPOSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, total_open_po, total_po FROM prasetia_dwidharma."public".project_control_po_total_open ORDER BY periode' />--%>
 </asp:Content>

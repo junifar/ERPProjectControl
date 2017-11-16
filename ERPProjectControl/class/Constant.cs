@@ -62,7 +62,8 @@ namespace ERPProjectControl.Constant
 	                                                        SALE_ORDER_LINE
                                                         SET
 	                                                        SALES_ORDER_DESCRIPTION = '{1}',
-	                                                        PROJECT_CONTROL_STATE_LINE = {2}
+	                                                        PROJECT_CONTROL_STATE_LINE = {2},
+                                                            CHECK_STATUS_PO = {3}
                                                         WHERE
 	                                                        ID = {0}";
 

@@ -176,6 +176,17 @@
                                                                 <telerik:DropDownListItem runat="server" Text="Cancel" Value="CANCEL"></telerik:DropDownListItem>
                                                             </Items>
                                                         </telerik:RadDropDownList>
+                                                    </div>
+                                                     <div class="form-group col-md-12">
+                                                        <asp:Label Text="PO Filter" runat="server" For="ddlStatusPO" />
+                                                        <telerik:RadDropDownList ID="ddlListPOFilter" runat="server"
+                                                            Skin="Bootstrap" EnableTheming="False"
+                                                            Width="100%" DefaultMessage="-- Please Select --" SelectedValue='<%# Bind("check_status_po") %>'>
+                                                            <Items>
+                                                                <telerik:DropDownListItem runat="server" Text="Yes" Value="1"></telerik:DropDownListItem>
+                                                                <telerik:DropDownListItem runat="server" Text="No" Value="0"></telerik:DropDownListItem>
+                                                            </Items>
+                                                        </telerik:RadDropDownList>
                                                     </div>              
                                                 </div>
                                             </div> 
@@ -468,7 +479,7 @@
             </div>
         </div>
     </section>
-    <asp:SqlDataSource ID="SqlDataSourceSalesOrder" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_control_sales_order.id, "public".project_control_sales_order.no_so, "public".project_control_sales_order.no_po, "public".project_control_sales_order.date_order, "public".project_control_sales_order.customer, "public".project_control_sales_order.site_id_customer, "public".project_control_sales_order.project_id_prasetia, "public".project_control_sales_order.site_name, "public".project_control_sales_order.area_name, "public".project_control_sales_order.sub_area_name, "public".project_control_sales_order.nilai_project, "public".project_control_sales_order.project_type, "public".project_control_sales_order.sub_project_type, "public".project_control_sales_order.project_control_state_line, "public".project_control_sales_order.sales_order_description, "public".project_control_sales_order.project_id, area_id, sub_area_id, sub_tipe_project_id, site_id FROM prasetia_dwidharma."public".project_control_sales_order WHERE ("public".project_control_sales_order.id = ?)'>
+    <asp:SqlDataSource ID="SqlDataSourceSalesOrder" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".project_control_sales_order.id, "public".project_control_sales_order.no_so, "public".project_control_sales_order.no_po, "public".project_control_sales_order.date_order, "public".project_control_sales_order.customer, "public".project_control_sales_order.site_id_customer, "public".project_control_sales_order.project_id_prasetia, "public".project_control_sales_order.site_name, "public".project_control_sales_order.area_name, "public".project_control_sales_order.sub_area_name, "public".project_control_sales_order.nilai_project, "public".project_control_sales_order.project_type, "public".project_control_sales_order.sub_project_type, "public".project_control_sales_order.project_control_state_line, "public".project_control_sales_order.sales_order_description, "public".project_control_sales_order.project_id, area_id, sub_area_id, sub_tipe_project_id, site_id, check_status_po FROM prasetia_dwidharma."public".project_control_sales_order WHERE ("public".project_control_sales_order.id = ?)'>
         <SelectParameters>
             <asp:QueryStringParameter QueryStringField="id" DefaultValue="0" Name="?"></asp:QueryStringParameter>
         </SelectParameters>
