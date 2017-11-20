@@ -78,18 +78,20 @@
                                     AllowAutomaticUpdates="True"
                                     FilterType="HeaderContext" OnFilterCheckListItemsRequested="RadGridListPO_FilterCheckListItemsRequested">
 
+                                    <ExportSettings ExportOnlyData="True" HideStructureColumns="True" IgnorePaging="True" OpenInNewWindow="True"></ExportSettings>
+
                                     <ClientSettings Resizing-AllowResizeToFit="True" Resizing-ResizeGridOnColumnResize="False" Resizing-EnableRealTimeResize="False" Resizing-AllowRowResize="False" Resizing-AllowColumnResize="False" Scrolling-FrozenColumnsCount="3" AllowDragToGroup="True">
                                         <Scrolling UseStaticHeaders="True" AllowScroll="True" ScrollHeight="500px"></Scrolling>
                                     </ClientSettings>
 
-                                    <MasterTableView DataSourceID="SqlDataSourceSalesOrderLine" AutoGenerateColumns="False" 
+                                    <MasterTableView DataSourceID="SqlDataSourceSalesOrderLine" AutoGenerateColumns="False"
                                         EnableHeaderContextAggregatesMenu="True" CommandItemDisplay="Top" DataKeyNames="ID">
-                                        <CommandItemSettings ShowAddNewRecordButton="False"></CommandItemSettings>
+                                        <CommandItemSettings ShowAddNewRecordButton="False" ShowExportToExcelButton="True"></CommandItemSettings>
                                         <Columns>
                                             <telerik:GridHyperLinkColumn UniqueName="HyperlinkEditColumn"
                                                 DataNavigateUrlFields="ID" DataNavigateUrlFormatString="sale_order_detail.aspx?id={0}" 
                                                 Text="Edit" ItemStyle-CssClass="btn" HeaderStyle-Width="40px"
-                                                Target="_blank" AllowFiltering="false" EnableHeaderContextMenu="false"></telerik:GridHyperLinkColumn>                                                                                       
+                                                Target="_blank" AllowFiltering="false" EnableHeaderContextMenu="false" Exportable="false"></telerik:GridHyperLinkColumn>                                                                                       
                                             <telerik:GridBoundColumn DataField="no_so" ReadOnly="True" 
                                                 HeaderText="Nomor SO" SortExpression="no_so" 
                                                 UniqueName="no_so" FilterControlAltText="Filter no_so column" 
@@ -184,8 +186,16 @@
             </div>
         </div>
     </section>
-    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLine" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, no_so, no_po, date_order, customer, site_id_customer, project_id_prasetia, site_name, area_name, sub_area_name, nilai_project, project_type, sub_project_type, project_control_state_line, sales_order_description, project_id, area_id, sub_area_id, sub_tipe_project_id, site_id, count_bast_status, count_bast, count_bast_mandatory, check_status_po FROM prasetia_dwidharma."public".project_control_sales_order' />
-    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLineFilter" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, no_so, no_po, date_order, customer, site_id_customer, project_id_prasetia, site_name, area_name, sub_area_name, nilai_project, project_type, sub_project_type, project_control_state_line, sales_order_description, project_id, area_id, sub_area_id, sub_tipe_project_id, site_id, count_bast_status, count_bast, count_bast_mandatory FROM prasetia_dwidharma."public".project_control_sales_order' />
+    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLine" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, no_so, no_po, date_order, customer, site_id_customer, project_id_prasetia, site_name, area_name, sub_area_name, nilai_project, project_type, sub_project_type, project_control_state_line, sales_order_description, project_id, area_id, sub_area_id, sub_tipe_project_id, site_id, count_bast_status, count_bast, count_bast_mandatory, check_status_po, group_status FROM prasetia_dwidharma."public".project_control_sales_order WHERE (group_status = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter QueryStringField="type" DefaultValue="" Name="?"></asp:QueryStringParameter>
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceSalesOrderLineFilter" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT id, no_so, no_po, date_order, customer, site_id_customer, project_id_prasetia, site_name, area_name, sub_area_name, nilai_project, project_type, sub_project_type, project_control_state_line, sales_order_description, project_id, area_id, sub_area_id, sub_tipe_project_id, site_id, count_bast_status, count_bast, count_bast_mandatory, check_status_po, group_status FROM prasetia_dwidharma."public".project_control_sales_order WHERE (group_status = ?)'>
+        <SelectParameters>
+            <asp:QueryStringParameter QueryStringField="type" Name="?"></asp:QueryStringParameter>
+        </SelectParameters>
+    </asp:SqlDataSource>
     <%--<asp:SqlDataSource ID="SqlDataSourceSalesOrderLine" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT "public".sale_order_line.id, "public".sale_order.name AS no_so, "public".sale_order.client_order_ref AS no_po, "public".sale_order.date_order, "public".res_partner.name AS customer, "public".project_site.site_id_customer, "public".account_analytic_account.name AS project_id_prasetia, "public".project_site.name AS site_name, "public".project_control_area.name AS area_name, "public".project_control_sub_area.name AS sub_area_name, "public".sale_order_line.price_unit AS nilai_project, "public".project_site_type.name AS project_type, "public".project_control_sub_tipe_project.name AS sub_project_type, "public".sale_order_line.project_control_state_line, "public".sale_order_line.sales_order_description FROM { oj { oj { oj { oj { oj { oj { oj { oj { oj prasetia_dwidharma."public".sale_order_line LEFT OUTER JOIN prasetia_dwidharma."public".sale_order ON "public".sale_order_line.order_id = "public".sale_order.id } LEFT OUTER JOIN prasetia_dwidharma."public".res_partner ON "public".sale_order.partner_id = "public".res_partner.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_project ON "public".sale_order_line.project_id = "public".project_project.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site ON "public".project_project.site_id = "public".project_site.id } LEFT OUTER JOIN prasetia_dwidharma."public".account_analytic_account ON "public".project_project.analytic_account_id = "public".account_analytic_account.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_area ON "public".project_site.project_control_area_id = "public".project_control_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_sub_area ON "public".project_site.project_control_sub_area_id = "public".project_control_sub_area.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_site_type ON "public".project_project.site_type_id = "public".project_site_type.id } LEFT OUTER JOIN prasetia_dwidharma."public".project_control_sub_tipe_project ON "public".project_project.project_control_sub_tipe_project_id = "public".project_control_sub_tipe_project.id }' />--%>
 
 </asp:Content>

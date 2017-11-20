@@ -14,6 +14,9 @@
         .RadGrid_Metro .rgRow a, .RadGrid_Metro .rgAltRow a, .RadGrid_Metro tr.rgEditRow a, .RadGrid_Metro .rgFooter a, .RadGrid_Metro .rgEditForm a {
             color: #ffffff !important;
         }
+         .jun_right {
+            text-align:right !important;
+         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster" runat="server">
@@ -152,11 +155,14 @@
                                         <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
                                         <telerik:PivotGridRowField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridRowField>
                                         <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>
-                                        <telerik:PivotGridColumnField UniqueName="project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>                                        
-                                        <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                        <telerik:PivotGridColumnField UniqueName="project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>
+                                        <telerik:PivotGridColumnField UniqueName="column_group_status" DataField="group_status" Caption="Project"></telerik:PivotGridColumnField>
+                                        <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id"
+                                            CellStyle-CssClass="jun_right">
                                             <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                         </telerik:PivotGridAggregateField>
-                                    </Fields>                                    
+                                    </Fields>
+                                    <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>                       
                                 </telerik:RadPivotGrid>
                             <%--</div>--%>                            
                         </div>
@@ -191,10 +197,13 @@
                                                     <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>                                                    
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
                                                     <telerik:PivotGridColumnField UniqueName="column_project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>
-                                                    <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                                    <telerik:PivotGridColumnField UniqueName="column_group_status" DataField="group_status" Caption="Project"></telerik:PivotGridColumnField>
+                                                    <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id"
+                                                        CellStyle-CssClass="jun_right">
                                                         <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                                     </telerik:PivotGridAggregateField>
                                                 </Fields>
+                                                <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>
                                             </telerik:RadPivotGrid>
                                
                                         </telerik:RadAjaxPanel>      
@@ -218,12 +227,15 @@
                                                     <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Tahun"></telerik:PivotGridRowField>
                                                     <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
                                                     <telerik:PivotGridColumnField UniqueName="column_project_control_state_line" DataField="project_control_state_line" Caption="Status"></telerik:PivotGridColumnField>
+                                                    <telerik:PivotGridColumnField UniqueName="column_group_status" DataField="group_status" Caption="Project"></telerik:PivotGridColumnField>
                                                     <telerik:PivotGridAggregateField Aggregate="Sum" 
                                                         GrandTotalAggregateFormatString="" CalculationExpression="" 
-                                                        UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}">
+                                                        UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}"
+                                                        CellStyle-CssClass="jun_right">
                                                         <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                                     </telerik:PivotGridAggregateField>
                                                 </Fields>
+                                                <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>
                                             </telerik:RadPivotGrid>
                                         </telerik:RadAjaxPanel>
                                     </div>
@@ -243,10 +255,12 @@
                                             <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
                                             <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                            
                                             <telerik:PivotGridColumnField UniqueName="column_project_type" DataField="project_type" Caption="Project Type"></telerik:PivotGridColumnField>
-                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id"
+                                                CellStyle-CssClass="jun_right">
                                                 <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                             </telerik:PivotGridAggregateField>
-                                        </Fields>                                    
+                                        </Fields>                
+                                        <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>                    
                                     </telerik:RadPivotGrid>
                                 </div>
                             </div>
@@ -264,10 +278,13 @@
                                             <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
                                             <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                            
                                             <telerik:PivotGridColumnField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridColumnField>
-                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id">
+                                            <telerik:PivotGridColumnField UniqueName="column_group_status" DataField="group_status" Caption="Project"></telerik:PivotGridColumnField>
+                                            <telerik:PivotGridAggregateField Aggregate="Count" GrandTotalAggregateFormatString="" CalculationExpression="" UniqueName="columnCountTotal" DataField="id"
+                                                CellStyle-CssClass="jun_right">
                                                 <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                             </telerik:PivotGridAggregateField>
-                                        </Fields>                                    
+                                        </Fields>                        
+                                        <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>            
                                     </telerik:RadPivotGrid>
                                 </div>
                             </div>
@@ -286,12 +303,15 @@
                                             <telerik:PivotGridColumnField UniqueName="column_area" DataField="area" Caption="Area"></telerik:PivotGridColumnField>
                                             <telerik:PivotGridRowField UniqueName="column_periode" DataField="periode" Caption="Periode"></telerik:PivotGridRowField>
                                             <telerik:PivotGridRowField UniqueName="column_customer" DataField="customer" Caption="Customer"></telerik:PivotGridRowField>                                        
+                                            <telerik:PivotGridColumnField UniqueName="column_group_status" DataField="group_status" Caption="Project"></telerik:PivotGridColumnField>
                                             <telerik:PivotGridAggregateField Aggregate="Sum" 
                                                 GrandTotalAggregateFormatString="" CalculationExpression="" 
-                                                UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}">
+                                                UniqueName="columnSumTotal" DataField="price_unit" DataFormatString="{0:N}"
+                                                CellStyle-CssClass="jun_right">
                                                 <TotalFormat Level="0" Axis="Rows" TotalFunction="NoCalculation" SortOrder="Ascending"></TotalFormat>
                                             </telerik:PivotGridAggregateField>
                                         </Fields>
+                                        <TotalsSettings ColumnsSubTotalsPosition="None"></TotalsSettings>
                                     </telerik:RadPivotGrid>
                                 </div>
                             </div>
@@ -303,7 +323,7 @@
             
         </div>
     </section>
-    <asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area FROM prasetia_dwidharma."public".project_control_po_by_year WHERE (periode > 2014)' />
+    <asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area, group_status FROM prasetia_dwidharma."public".project_control_po_by_year WHERE (periode > 2014)' />
     <asp:SqlDataSource ID="ChartOpenPOSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, total_open_po, total_po FROM prasetia_dwidharma."public".project_control_po_total_open WHERE (periode > 2014) ORDER BY periode' />
 
     <%--<asp:SqlDataSource ID="POByYearCustomerSqlDataSource" runat="server" ConnectionString='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString %>' ProviderName='<%$ ConnectionStrings:PrasetiaDwidharmaConnectionString.ProviderName %>' SelectCommand='SELECT periode, customer, id, price_unit, project_control_state_line, project_type, area FROM prasetia_dwidharma."public".project_control_po_by_year' />
