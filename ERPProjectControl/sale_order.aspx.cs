@@ -31,7 +31,7 @@ namespace ERPProjectControl
 
         public DataTable GetDataTable(string field)
         {
-            string query = string.Format("SELECT DISTINCT {0} FROM project_control_sales_order", field);
+            string query = string.Format("SELECT DISTINCT {0} FROM project_control_sales_order WHERE (group_status = '{1}')", field, Request.QueryString["type"].ToString());
 
             SqlDataSourceSalesOrderLineFilter.SelectCommand = query;
 
