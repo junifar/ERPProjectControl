@@ -52,7 +52,7 @@ namespace ERPProjectControl.Constant
         public static string queryUpdateSite = @"UPDATE
 	                                                PROJECT_SITE
                                                 SET
-	                                                SITE_ID_CUSTOMER = {1},
+	                                                SITE_ID_CUSTOMER = '{1}',
 	                                                PROJECT_CONTROL_AREA_ID = {2},
 	                                                PROJECT_CONTROL_SUB_AREA_ID = {3}
                                                 WHERE
