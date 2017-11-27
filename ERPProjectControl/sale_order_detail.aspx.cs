@@ -31,7 +31,7 @@ namespace ERPProjectControl
                         project_id = drv["project_id"].ToString();
 
                         loadInvoiceList((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
-                        loadBastProject((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0");
+                        loadBastProject((drv["project_id"].ToString() != "") ? drv["project_id"].ToString() : "0", drv["group_status"].ToString());
 
                         LabelProjectID.Text = drv["project_id_prasetia"].ToString();
                         LabelSiteID.Text = drv["site_name"].ToString();
@@ -56,9 +56,9 @@ namespace ERPProjectControl
             SqlDataSourceInvoiceList.SelectCommand = string.Format(Constant.Constant.querySaleInvoice, project_id);
         }
 
-        protected void loadBastProject(string project_id) {
+        protected void loadBastProject(string project_id, string group_status) {
             DataView dv = (DataView)SqlDataSourceBinderVolume1.Select(DataSourceSelectArguments.Empty);
-            if (dv.Count == 0 && project_id != "0") {
+            if (dv.Count == 0 && project_id != "0" && group_status != "MTC") {
                 generateBastProjectDocument(project_id);
             }
             SqlDataSourceBinderVolume1.DataBind();
@@ -81,7 +81,7 @@ namespace ERPProjectControl
 
             SqlDataSourceArea.UpdateCommand = string.Format(Constant.Constant.queryUpdateSite,
                 site_id,
-                checkNullOrEmpty(site_id_customer, "''"),
+                checkNullOrEmpty(site_id_customer, ""),
                 checkNullOrEmpty(area, "NULL"),
                 checkNullOrEmpty(sub_area, "NULL"));
             SqlDataSourceArea.Update();
